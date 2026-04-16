@@ -1,6 +1,5 @@
 import heroBg from "@/assets/hero-bg.jpg";
-
-const AVATAR_URL = "https://avatars.githubusercontent.com/u/48308230?v=4";
+import { AVATAR_URL } from "@/lib/avatar";
 
 const HeroSection = () => {
   return (

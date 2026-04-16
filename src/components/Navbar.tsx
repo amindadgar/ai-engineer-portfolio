@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { AVATAR_URL } from "@/lib/avatar";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -26,8 +27,13 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#" className="text-lg font-semibold text-gradient">
-          M.A. Dadgar
+        <a href="#" className="flex items-center gap-3">
+          <img
+            src={AVATAR_URL}
+            alt="Mohammad Amin Dadgar"
+            className="h-9 w-9 rounded-full border border-primary/30 object-cover shadow-sm shadow-primary/20"
+          />
+          <span className="text-lg font-semibold text-gradient">M.A. Dadgar</span>
         </a>
 
         {/* Desktop */}
