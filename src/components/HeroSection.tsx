@@ -1,5 +1,7 @@
 import heroBg from "@/assets/hero-bg.jpg";
 
+const AVATAR_URL = "https://avatars.githubusercontent.com/u/48308230?v=4";
+
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
