@@ -1,10 +1,19 @@
 const articles = [
   {
+    title: "My Experience with AgenticSeek",
+    description:
+      "Hands-on exploration of AgenticSeek — sharing insights and takeaways from working with agentic AI workflows.",
+    url: "https://www.linkedin.com/posts/amindadgar_my-experience-with-agenticseek-i-went-share-7450177355807072257-f93S",
+    tag: "LinkedIn",
+    platform: "LinkedIn",
+  },
+  {
     title: "How Are Methods in XAI Evaluated?",
     description:
       "A deep dive into evaluation methodologies for Explainable AI techniques, comparing quantitative and qualitative approaches.",
     url: "https://amindadgar.medium.com/how-are-methods-in-xai-evaluated-b5b3b942e06d",
     tag: "XAI",
+    platform: "Medium",
   },
   {
     title: "What is Machine Learning Model Interpretation?",
@@ -12,6 +21,7 @@ const articles = [
       "Exploring the fundamentals of model interpretability — why it matters and how practitioners can leverage it for better AI systems.",
     url: "https://amindadgar.medium.com/what-is-machine-learning-model-interpretation-9556c3c247e6",
     tag: "ML",
+    platform: "Medium",
   },
   {
     title: "Artificial Intelligence is Against Humanity — Wait, What?",
@@ -19,6 +29,7 @@ const articles = [
       "A thoughtful examination of common misconceptions about AI risks, separating fact from fiction in the debate around AI safety.",
     url: "https://amindadgar.medium.com/artificial-intelligence-is-against-humanity-wait-what-c1a8bc934146",
     tag: "AI Ethics",
+    platform: "Medium",
   },
 ];
 
@@ -27,7 +38,7 @@ const BlogSection = () => {
     <section id="blog" className="section-padding">
       <div className="max-w-4xl mx-auto px-6">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          Writing & <span className="text-gradient">Thoughts</span>
+          Writing & <span className="text-gradient">Activity</span>
         </h2>
         <div className="h-1 w-16 bg-primary rounded-full mb-12" />
 
@@ -42,9 +53,14 @@ const BlogSection = () => {
             >
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <span className="inline-block px-2.5 py-0.5 text-xs rounded-md bg-primary/10 text-primary font-medium mb-3">
-                    {article.tag}
-                  </span>
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="inline-block px-2.5 py-0.5 text-xs rounded-md bg-primary/10 text-primary font-medium">
+                      {article.tag}
+                    </span>
+                    <span className="inline-block px-2.5 py-0.5 text-xs rounded-md bg-secondary text-secondary-foreground">
+                      {article.platform}
+                    </span>
+                  </div>
                   <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-2">
                     {article.title}
                   </h3>
