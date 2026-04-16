@@ -23,7 +23,7 @@ const HeroSection = () => {
           <img
             src={AVATAR_URL}
             alt="Mohammad Amin Dadgar"
-            className="w-28 h-28 md:w-36 md:h-36 rounded-full border-2 border-primary/40 shadow-lg shadow-primary/20 object-cover mx-auto"
+            className="w-28 h-28 md:w-36 md:h-36 rounded-full border-2 border-primary/40 shadow-lg shadow-primary/20 object-cover mx-auto opacity-60"
           />
         </div>
 
