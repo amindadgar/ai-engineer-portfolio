@@ -19,6 +19,14 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+        <div className="mb-6 animate-fade-in">
+          <img
+            src={AVATAR_URL}
+            alt="Mohammad Amin Dadgar"
+            className="w-28 h-28 md:w-36 md:h-36 rounded-full border-2 border-primary/40 shadow-lg shadow-primary/20 object-cover mx-auto"
+          />
+        </div>
+
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-glow bg-primary/5 mb-8 animate-fade-in">
           <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
           <span className="text-sm text-primary font-medium">AI Engineer</span>
