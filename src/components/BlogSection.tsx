@@ -1,5 +1,13 @@
 const articles = [
   {
+    title: "MCP, LLMs, and Dynamic Integration",
+    description:
+      "On MCP accelerating platform connections, models as orchestration layers, and what software products become when integration pipelines can be assembled on the fly.",
+    url: "https://www.linkedin.com/posts/amindadgar_given-mcp-platforms-are-starting-to-connect-share-7450510156175392769-95NE",
+    tag: "MCP",
+    platform: "LinkedIn",
+  },
+  {
     title: "My Experience with AgenticSeek",
     description:
       "Hands-on exploration of AgenticSeek — sharing insights and takeaways from working with agentic AI workflows.",
