@@ -1,5 +1,6 @@
 import heroBg from "@/assets/hero-bg.jpg";
 import { AVATAR_URL } from "@/lib/avatar";
+import HandwritingName from "@/components/HandwritingName";
 
 const HeroSection = () => {
   return (
@@ -31,11 +32,9 @@ const HeroSection = () => {
           <span className="text-sm text-primary font-medium">AI Engineer</span>
         </div>
 
-        <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-6 animate-fade-up">
-          Mohammad Amin
-          <br />
-          <span className="text-gradient">Dadgar</span>
-        </h1>
+        <div className="mb-6 animate-fade-up">
+          <HandwritingName />
+        </div>
 
         <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-up" style={{ animationDelay: "0.15s" }}>
           Building production LLM systems, retrieval pipelines, and intelligent workflow automation.
