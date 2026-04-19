@@ -1,5 +1,13 @@
 const articles = [
   {
+    title: "AI Should Replace Repetitive Work, Not Human Creativity",
+    description:
+      "A reflection on AI replacing repetitive, exhausting tasks so we can move faster on meaningful work — and the challenge of deciding what can be delegated as the landscape changes.",
+    url: "https://x.com/mramin22/status/2045868464439541812?s=20",
+    tag: "AI",
+    platform: "X",
+  },
+  {
     title: "MCP, LLMs, and Dynamic Integration",
     description:
       "On MCP accelerating platform connections, models as orchestration layers, and what software products become when integration pipelines can be assembled on the fly.",
