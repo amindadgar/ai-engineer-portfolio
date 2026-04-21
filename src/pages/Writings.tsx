@@ -22,25 +22,18 @@ const Writings = () => {
 
           <section className="relative overflow-hidden rounded-[2rem] border border-border bg-card/80 p-8 md:p-12">
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-            <div className="mb-10 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-              <div className="max-w-2xl">
-                <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-sm text-primary">
-                  <BookOpenText className="h-4 w-4" />
-                  Writings archive
-                </div>
-                <h1 className="mb-4 text-4xl font-bold tracking-tight md:text-5xl">
-                  Essays, threads, and practical notes on <span className="text-gradient">AI engineering</span>
-                </h1>
-                <p className="text-base leading-relaxed text-muted-foreground md:text-lg">
-                  A full list of my published thoughts across Medium, LinkedIn, and X, from model
-                  interpretation and XAI to agentic systems and product-facing AI workflows.
-                </p>
+            <div className="mb-10 max-w-2xl">
+              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-sm text-primary">
+                <BookOpenText className="h-4 w-4" />
+                Writings archive
               </div>
-
-              <div className="rounded-3xl border border-border bg-background/70 px-6 py-5">
-                <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">Total writings</p>
-                <p className="mt-2 text-4xl font-bold text-foreground">{allWritings.length}</p>
-              </div>
+              <h1 className="mb-4 text-4xl font-bold tracking-tight md:text-5xl">
+                Essays, threads, and practical notes on <span className="text-gradient">AI engineering</span>
+              </h1>
+              <p className="text-base leading-relaxed text-muted-foreground md:text-lg">
+                A full list of my published thoughts across Medium, LinkedIn, and X, from model
+                interpretation and XAI to agentic systems and product-facing AI workflows.
+              </p>
             </div>
 
             <div className="space-y-6">

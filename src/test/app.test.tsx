@@ -46,6 +46,19 @@ describe("portfolio app", () => {
   it("returns to homepage sections from the writings page navbar", async () => {
     renderAtRoute("/writings");
 
+    fireEvent.click(screen.getAllByRole("link", { name: "Writings" })[0]);
+
+    expect(await screen.findByRole("heading", { name: /recent writings/i })).toBeInTheDocument();
+
+    await waitFor(() => {
+      expect(window.location.pathname).toBe("/");
+      expect(window.location.hash).toBe("#writings");
+    });
+  });
+
+  it("returns to the about section from the writings page navbar", async () => {
+    renderAtRoute("/writings");
+
     fireEvent.click(screen.getAllByRole("link", { name: "About" })[0]);
 
     expect(await screen.findByRole("heading", { name: /about me/i })).toBeInTheDocument();

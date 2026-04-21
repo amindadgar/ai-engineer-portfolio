@@ -28,7 +28,12 @@ const WritingsSection = () => {
         </div>
 
         <div className="mt-10 flex justify-center">
-          <Button asChild size="lg" className="rounded-xl px-6">
+          <Button
+            asChild
+            size="lg"
+            variant="outline"
+            className="rounded-xl border-primary/20 bg-primary/5 px-6 text-primary hover:bg-primary/10 hover:text-primary"
+          >
             <Link to="/writings">
               View all writings
               <ArrowRight />

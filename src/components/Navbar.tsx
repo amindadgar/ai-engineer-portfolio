@@ -7,7 +7,7 @@ const navLinks = [
   { label: "Experience", type: "section", href: "#experience" },
   { label: "Projects", type: "section", href: "#projects" },
   { label: "Skills", type: "section", href: "#skills" },
-  { label: "Writings", type: "route", href: "/writings" },
+  { label: "Writings", type: "section", href: "#writings" },
   { label: "Volunteer Work", type: "section", href: "#volunteer" },
   { label: "Contact", type: "section", href: "#contact" },
 ] as const;
@@ -21,10 +21,6 @@ const getSectionDestination = (href: string) => ({
 });
 
 const isLinkActive = (href: string, pathname: string, hash: string, isHome: boolean) => {
-  if (href === "/writings") {
-    return pathname === "/writings";
-  }
-
   return isHome && hash === href;
 };
 
@@ -47,18 +43,6 @@ const Navbar = () => {
 
   const renderNavLink = (link: (typeof navLinks)[number]) => {
     const active = isLinkActive(link.href, location.pathname, location.hash, isHome);
-
-    if (link.type === "route") {
-      return (
-        <Link
-          key={link.href}
-          to={link.href}
-          className={cn(linkClasses, active && "text-foreground")}
-        >
-          {link.label}
-        </Link>
-      );
-    }
 
     return (
       <Link
