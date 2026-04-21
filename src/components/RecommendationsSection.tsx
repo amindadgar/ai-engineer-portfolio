@@ -41,9 +41,9 @@ const RecommendationsSection = () => {
                     href={recommendation.sourceUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group block h-full rounded-3xl border border-border bg-background/60 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-glow hover:glow-sm"
+                    className="group flex h-full flex-col rounded-3xl border border-border bg-background/60 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-glow hover:glow-sm"
                   >
-                    <div className="mb-5 flex items-start gap-4">
+                    <div className="mb-5 flex min-h-[10.5rem] items-start gap-4">
                       {recommendation.imageUrl ? (
                         <img
                           src={recommendation.imageUrl}
@@ -56,11 +56,13 @@ const RecommendationsSection = () => {
                           {getInitials(recommendation.author)}
                         </div>
                       )}
-                      <div className="min-w-0">
+                      <div className="flex min-w-0 flex-1 flex-col">
                         <div className="mb-1 flex items-start justify-between gap-3">
                           <div>
                             <p className="font-semibold text-foreground">{recommendation.author}</p>
-                            <p className="text-sm leading-snug text-muted-foreground">{recommendation.role}</p>
+                            <p className="min-h-[4.75rem] text-sm leading-snug text-muted-foreground">
+                              {recommendation.role}
+                            </p>
                           </div>
                           <ExternalLink className="mt-1 h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-primary" />
                         </div>
@@ -68,9 +70,11 @@ const RecommendationsSection = () => {
                       </div>
                     </div>
 
-                    <div className="mb-5 rounded-2xl border border-border bg-card px-4 py-3">
+                    <div className="mb-5 rounded-2xl border border-border bg-card px-3.5 py-2.5">
                       <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Context</p>
-                      <p className="mt-2 text-sm leading-relaxed text-foreground/90">{recommendation.relationship}</p>
+                      <p className="mt-1.5 min-h-[3.5rem] text-xs leading-relaxed text-muted-foreground">
+                        {recommendation.relationship}
+                      </p>
                     </div>
 
                     <p className="text-sm leading-relaxed text-muted-foreground">{recommendation.excerpt}</p>

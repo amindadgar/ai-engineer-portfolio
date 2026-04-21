@@ -7,7 +7,7 @@ import { latestWritings } from "@/data/portfolio";
 const WritingsSection = () => {
   return (
     <section id="writings" className="section-padding scroll-mt-24">
-      <div className="mx-auto max-w-4xl px-6">
+      <div className="mx-auto max-w-6xl px-6">
         <div className="mb-12">
           <div>
             <h2 className="mb-4 text-3xl font-bold md:text-4xl">

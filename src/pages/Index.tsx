@@ -16,11 +16,11 @@ const Index = () => {
       <Navbar />
       <HeroSection />
       <AboutSection />
+      <RecommendationsSection />
       <ExperienceSection />
       <ProjectsSection />
       <SkillsSection />
       <WritingsSection />
-      <RecommendationsSection />
       <VolunteerSection />
       <ContactSection />
       <Footer />

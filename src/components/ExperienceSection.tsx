@@ -45,7 +45,7 @@ const experiences = [
 const ExperienceSection = () => {
   return (
     <section id="experience" className="section-padding bg-surface">
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
           Work <span className="text-gradient">Experience</span>
         </h2>
