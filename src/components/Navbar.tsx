@@ -1,24 +1,75 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Blog", href: "#blog" },
-  { label: "Volunteer Work", href: "#volunteer" },
-  { label: "Contact", href: "#contact" },
-];
+  { label: "About", type: "section", href: "#about" },
+  { label: "Experience", type: "section", href: "#experience" },
+  { label: "Projects", type: "section", href: "#projects" },
+  { label: "Skills", type: "section", href: "#skills" },
+  { label: "Writings", type: "route", href: "/writings" },
+  { label: "Volunteer Work", type: "section", href: "#volunteer" },
+  { label: "Contact", type: "section", href: "#contact" },
+] as const;
+
+const linkClasses = "text-sm text-muted-foreground transition-colors hover:text-foreground";
+
+const getSectionDestination = (href: string) => ({
+  pathname: "/",
+  hash: href,
+  search: "",
+});
+
+const isLinkActive = (href: string, pathname: string, hash: string, isHome: boolean) => {
+  if (href === "/writings") {
+    return pathname === "/writings";
+  }
+
+  return isHome && hash === href;
+};
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location.pathname, location.hash]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const renderNavLink = (link: (typeof navLinks)[number]) => {
+    const active = isLinkActive(link.href, location.pathname, location.hash, isHome);
+
+    if (link.type === "route") {
+      return (
+        <Link
+          key={link.href}
+          to={link.href}
+          className={cn(linkClasses, active && "text-foreground")}
+        >
+          {link.label}
+        </Link>
+      );
+    }
+
+    return (
+      <Link
+        key={link.href}
+        to={getSectionDestination(link.href)}
+        className={cn(linkClasses, active && "text-foreground")}
+      >
+        {link.label}
+      </Link>
+    );
+  };
 
   return (
     <nav
@@ -27,21 +78,13 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-3">
+        <Link to="/" className="flex items-center gap-3">
           <span className="text-lg font-semibold text-gradient">M.A. Dadgar</span>
-        </a>
+        </Link>
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map(renderNavLink)}
         </div>
 
         {/* Mobile toggle */}
@@ -64,14 +107,9 @@ const Navbar = () => {
       {mobileOpen && (
         <div className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border px-6 py-4 space-y-3">
           {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setMobileOpen(false)}
-              className="block text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              {link.label}
-            </a>
+            <div key={link.href} onClick={() => setMobileOpen(false)}>
+              {renderNavLink(link)}
+            </div>
           ))}
         </div>
       )}
