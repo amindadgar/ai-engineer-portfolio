@@ -63,7 +63,7 @@ const Navbar = () => {
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3">
-          <span className="text-lg font-semibold text-gradient">M.A. Dadgar</span>
+          <span className="text-lg font-semibold text-gradient">M. Amin Dadgar</span>
         </Link>
 
         {/* Desktop */}

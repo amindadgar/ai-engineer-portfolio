@@ -19,6 +19,33 @@ export type RecommendationItem = {
 
 const writings: WritingItem[] = [
   {
+    title: "How I Got Cursor Working with 9Router via Ngrok",
+    description:
+      "A practical setup note on connecting Cursor to 9Router by exposing a local OpenAI-compatible endpoint through ngrok and smoothing out the integration details.",
+    url: "https://amindadgar.medium.com/how-i-got-cursor-working-with-9router-via-ngrok-aaf4a0e508f0",
+    tag: "AI Tooling",
+    platform: "Medium",
+    publishedAt: "2026-04-29",
+  },
+  {
+    title: "Maximize Every Token You Have",
+    description:
+      "A focused reminder to treat context as a scarce resource: compress prompts, prune noise, and spend tokens only where they improve the result.",
+    url: "https://www.linkedin.com/posts/amindadgar_maximize-every-token-you-have-seriouslyuse-share-7454805086632919041-zGtG?utm_source=share&utm_medium=member_desktop&rcm=ACoAACrshjUBYenM2iIuGxt06guTUq0OAh6OwQU",
+    tag: "Prompting",
+    platform: "LinkedIn",
+    publishedAt: "2026-04-28",
+  },
+  {
+    title: "Build Advanced Voice AI Agents with Vapi",
+    description:
+      "Notes on building more capable voice AI workflows with Vapi, from conversation design to the practical systems behind advanced voice agents.",
+    url: "https://www.linkedin.com/posts/amindadgar_vapi-build-advanced-voice-ai-agents-share-7454492208717611008-xNWo?utm_source=share&utm_medium=member_desktop&rcm=ACoAACrshjUBYenM2iIuGxt06guTUq0OAh6OwQU",
+    tag: "Voice AI",
+    platform: "LinkedIn",
+    publishedAt: "2026-04-27",
+  },
+  {
     title: "MCP, LLMs, and Dynamic Integration",
     description:
       "On MCP accelerating platform connections, models as orchestration layers, and what software products become when integration pipelines can be assembled on the fly.",
