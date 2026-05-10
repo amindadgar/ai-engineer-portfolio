@@ -19,6 +19,15 @@ export type RecommendationItem = {
 
 const writings: WritingItem[] = [
   {
+    title: "Taking a Look Back at the RAG Stack I Built",
+    description:
+      "A retrospective on building a Retrieval-Augmented Generation (RAG) stack, sharing technical insights and lessons learned from the implementation.",
+    url: "https://www.linkedin.com/posts/amindadgar_taking-a-look-back-at-the-rag-stack-i-built-share-7457063564793667584-RkCW?utm_source=share&utm_medium=member_desktop&rcm=ACoAACrshjUBYenM2iIuGxt06guTUq0OAh6OwQU",
+    tag: "RAG",
+    platform: "LinkedIn",
+    publishedAt: "2026-05-05",
+  },
+  {
     title: "How I Got Cursor Working with 9Router via Ngrok",
     description:
       "A practical setup note on connecting Cursor to 9Router by exposing a local OpenAI-compatible endpoint through ngrok and smoothing out the integration details.",
