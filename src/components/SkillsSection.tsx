@@ -1,58 +1,60 @@
-const skillCategories = [
+import { Braces, Brain, Database, Workflow, LayoutTemplate, Wrench, type LucideIcon } from "lucide-react";
+import SectionHeading from "@/components/SectionHeading";
+
+const skillCategories: { title: string; icon: LucideIcon; skills: string[] }[] = [
   {
     title: "Languages",
-    icon: "⟨/⟩",
+    icon: Braces,
     skills: ["Python", "TypeScript", "JavaScript", "SQL", "LaTeX"],
   },
   {
     title: "AI / LLM",
-    icon: "🧠",
+    icon: Brain,
     skills: ["OpenAI API", "llama-index", "LangChain", "CrewAI", "RAG Evaluation"],
   },
   {
     title: "Backend & Data",
-    icon: "🗄️",
+    icon: Database,
     skills: ["Supabase", "PostgreSQL", "MongoDB", "Neo4j", "Qdrant"],
   },
   {
     title: "Workflow & Pipelines",
-    icon: "⚙️",
+    icon: Workflow,
     skills: ["Apache Airflow", "Temporal", "RabbitMQ", "AWS S3 / MinIO"],
   },
   {
     title: "Frontend & Product",
-    icon: "🎨",
+    icon: LayoutTemplate,
     skills: ["React", "Vite", "Tailwind CSS", "Chrome Extensions (MV3)"],
   },
   {
     title: "Tooling",
-    icon: "🔧",
+    icon: Wrench,
     skills: ["Docker", "Git", "Pytest", "CI/CD"],
   },
 ];
 
 const SkillsSection = () => {
   return (
-    <section id="skills" className="section-padding bg-surface">
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          Technical <span className="text-gradient">Skills</span>
-        </h2>
-        <div className="h-1 w-16 bg-primary rounded-full mb-12" />
+    <section id="skills" className="section-padding scroll-mt-24 border-t border-border">
+      <div className="mx-auto max-w-6xl px-6">
+        <SectionHeading index="05" kicker="Skills" title="Technical toolkit" />
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {skillCategories.map((cat) => (
             <div
               key={cat.title}
-              className="p-6 rounded-xl border border-border bg-card hover:border-glow transition-colors"
+              className="rounded-lg border border-border bg-card p-6 card-hover"
             >
-              <div className="text-2xl mb-3">{cat.icon}</div>
-              <h3 className="text-base font-semibold text-foreground mb-4">{cat.title}</h3>
+              <div className="mb-4 flex items-center gap-2.5">
+                <cat.icon className="h-4 w-4 text-primary" />
+                <h3 className="text-sm font-semibold text-foreground">{cat.title}</h3>
+              </div>
               <div className="flex flex-wrap gap-2">
                 {cat.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="px-3 py-1.5 text-sm rounded-lg bg-secondary text-secondary-foreground"
+                    className="rounded border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
                   >
                     {skill}
                   </span>

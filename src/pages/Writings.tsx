@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, BookOpenText } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WritingCard from "@/components/WritingCard";
-import { Button } from "@/components/ui/button";
 import { allWritings } from "@/data/portfolio";
 
 const Writings = () => {
@@ -12,36 +11,31 @@ const Writings = () => {
       <Navbar />
 
       <main className="px-6 pb-20 pt-28 md:pt-32">
-        <div className="mx-auto max-w-5xl">
-          <Button asChild variant="ghost" className="mb-8 rounded-xl px-0 text-muted-foreground hover:text-foreground">
-            <Link to="/#writings">
-              <ArrowLeft />
-              Back to home
-            </Link>
-          </Button>
+        <div className="mx-auto max-w-4xl">
+          <Link
+            to="/#writings"
+            className="mb-10 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Back to home
+          </Link>
 
-          <section className="relative overflow-hidden rounded-[2rem] border border-border bg-card/80 p-8 md:p-12">
-            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-            <div className="mb-10 max-w-2xl">
-              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-sm text-primary">
-                <BookOpenText className="h-4 w-4" />
-                Writings archive
-              </div>
-              <h1 className="mb-4 text-4xl font-bold tracking-tight md:text-5xl">
-                Essays, threads, and practical notes on <span className="text-gradient">AI engineering</span>
-              </h1>
-              <p className="text-base leading-relaxed text-muted-foreground md:text-lg">
-                A full list of my published thoughts across Medium, LinkedIn, and X, from model
-                interpretation and XAI to agentic systems and product-facing AI workflows.
-              </p>
-            </div>
+          <header className="mb-12">
+            <p className="label-mono mb-3">Writings archive</p>
+            <h1 className="text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
+              Essays, threads, and practical notes on AI engineering
+            </h1>
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
+              A full list of my published thoughts across Medium, LinkedIn, and X — from model
+              interpretation and XAI to agentic systems and product-facing AI workflows.
+            </p>
+          </header>
 
-            <div className="space-y-6">
-              {allWritings.map((writing) => (
-                <WritingCard key={writing.title} writing={writing} />
-              ))}
-            </div>
-          </section>
+          <div className="space-y-4">
+            {allWritings.map((writing) => (
+              <WritingCard key={writing.title} writing={writing} />
+            ))}
+          </div>
         </div>
       </main>
 

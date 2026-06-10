@@ -61,7 +61,7 @@ describe("portfolio app", () => {
 
     fireEvent.click(screen.getAllByRole("link", { name: "About" })[0]);
 
-    expect(await screen.findByRole("heading", { name: /about me/i })).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { name: /background/i })).toBeInTheDocument();
 
     await waitFor(() => {
       expect(window.location.pathname).toBe("/");
@@ -72,7 +72,7 @@ describe("portfolio app", () => {
   it("shows the recommendations cards and LinkedIn card links", () => {
     renderAtRoute("/");
 
-    const recommendationsHeading = screen.getByRole("heading", { name: /received recommendations/i });
+    const recommendationsHeading = screen.getByRole("heading", { name: /what colleagues say/i });
     const recommendationsSection = recommendationsHeading.closest("section");
 
     expect(recommendationsSection).not.toBeNull();

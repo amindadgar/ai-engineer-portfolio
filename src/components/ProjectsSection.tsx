@@ -1,3 +1,6 @@
+import { ArrowUpRight } from "lucide-react";
+import SectionHeading from "@/components/SectionHeading";
+
 const projects = [
   {
     title: "AXIS",
@@ -51,52 +54,37 @@ const projects = [
 
 const ProjectsSection = () => {
   return (
-    <section id="projects" className="section-padding">
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          Featured <span className="text-gradient">Projects</span>
-        </h2>
-        <div className="h-1 w-16 bg-primary rounded-full mb-12" />
+    <section id="projects" className="section-padding scroll-mt-24 border-t border-border">
+      <div className="mx-auto max-w-6xl px-6">
+        <SectionHeading index="04" kicker="Projects" title="Selected work" />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid gap-px overflow-hidden rounded-lg border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
             <a
               key={project.title}
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group p-6 rounded-xl border border-border bg-card hover:border-glow hover:glow-sm transition-all duration-300"
+              className="group flex flex-col bg-card p-6 transition-colors duration-200 hover:bg-surface-hover"
             >
-              <div className="flex items-start justify-between mb-3">
-                <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
+              <div className="mb-3 flex items-start justify-between gap-3">
+                <h3 className="text-base font-semibold text-foreground transition-colors group-hover:text-primary">
                   {project.title}
                 </h3>
-                <svg
-                  className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors shrink-0 mt-0.5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path d="M7 17L17 7M17 7H7M17 7v10" />
-                </svg>
+                <ArrowUpRight className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-primary" />
               </div>
 
-              <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+              <p className="mb-5 flex-1 text-sm leading-relaxed text-muted-foreground">
                 {project.description}
               </p>
 
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-primary/10 text-primary text-xs font-medium mb-4">
-                ⚡ {project.highlight}
-              </div>
+              <p className="mb-3 font-mono text-xs font-medium text-primary">
+                {project.highlight}
+              </p>
 
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <span key={tag} className="px-2 py-0.5 text-xs rounded bg-secondary text-secondary-foreground">
-                    {tag}
-                  </span>
-                ))}
-              </div>
+              <p className="font-mono text-xs text-muted-foreground">
+                {project.tags.join(" · ")}
+              </p>
             </a>
           ))}
         </div>

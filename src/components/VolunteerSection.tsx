@@ -1,3 +1,6 @@
+import { ArrowUpRight } from "lucide-react";
+import SectionHeading from "@/components/SectionHeading";
+
 const volunteerWork = [
   {
     role: "Co-Founder",
@@ -27,46 +30,38 @@ const volunteerWork = [
 
 const VolunteerSection = () => {
   return (
-    <section id="volunteer" className="section-padding bg-surface">
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          Volunteer <span className="text-gradient">Work</span>
-        </h2>
-        <div className="h-1 w-16 bg-primary rounded-full mb-12" />
+    <section id="volunteer" className="section-padding scroll-mt-24 border-t border-border">
+      <div className="mx-auto max-w-6xl px-6">
+        <SectionHeading index="07" kicker="Community" title="Volunteer work" />
 
-        <div className="space-y-8">
+        <div className="grid gap-4 md:grid-cols-2">
           {volunteerWork.map((item) => (
             <div
               key={item.organization}
-              className="p-6 rounded-xl border border-border bg-card hover:border-glow transition-colors"
+              className="rounded-lg border border-border bg-card p-6 card-hover"
             >
-              <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
-                <div>
-                  <h3 className="text-lg font-semibold text-foreground">
-                    {item.role}
-                  </h3>
-                  <a
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-primary hover:underline"
-                  >
-                    {item.organization} ↗
-                  </a>
-                </div>
-              </div>
+              <h3 className="text-base font-semibold text-foreground">
+                {item.role}
+                <span className="text-muted-foreground"> · </span>
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 transition-colors hover:text-primary"
+                >
+                  {item.organization}
+                  <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
+                </a>
+              </h3>
 
-              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 {item.description}
               </p>
 
-              <ul className="space-y-2">
+              <ul className="mt-4 space-y-2.5">
                 {item.highlights.map((h, j) => (
-                  <li
-                    key={j}
-                    className="text-sm text-muted-foreground flex gap-2"
-                  >
-                    <span className="text-primary mt-1 shrink-0">▹</span>
+                  <li key={j} className="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                    <span className="mt-[0.6rem] h-px w-3 shrink-0 bg-primary/60" />
                     {h}
                   </li>
                 ))}

@@ -1,3 +1,6 @@
+import { Mail } from "lucide-react";
+import SectionHeading from "@/components/SectionHeading";
+
 const socials = [
   {
     label: "GitHub",
@@ -39,41 +42,38 @@ const socials = [
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="section-padding bg-surface">
-      <div className="max-w-2xl mx-auto px-6 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          Let's <span className="text-gradient">Connect</span>
-        </h2>
-        <div className="h-1 w-16 bg-primary rounded-full mb-8 mx-auto" />
+    <section id="contact" className="section-padding scroll-mt-24 border-t border-border">
+      <div className="mx-auto max-w-6xl px-6">
+        <SectionHeading
+          index="08"
+          kicker="Contact"
+          title="Let's work together"
+          description="I'm always open to discussing AI engineering, new opportunities, or interesting collaborations."
+        />
 
-        <p className="text-muted-foreground mb-8 leading-relaxed">
-          I'm always open to discussing AI engineering, new opportunities, or interesting
-          collaborations. Feel free to reach out!
-        </p>
+        <div className="flex flex-wrap items-center gap-4">
+          <a
+            href="mailto:dadgaramin96@gmail.com"
+            className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+          >
+            <Mail className="h-4 w-4" />
+            dadgaramin96@gmail.com
+          </a>
 
-        <a
-          href="mailto:dadgaramin96@gmail.com"
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity glow-sm mb-10"
-        >
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-          </svg>
-          dadgaramin96@gmail.com
-        </a>
-
-        <div className="flex items-center justify-center gap-4">
-          {socials.map((s) => (
-            <a
-              key={s.label}
-              href={s.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={s.label}
-              className="p-3 rounded-lg border border-border text-muted-foreground hover:text-primary hover:border-glow transition-colors"
-            >
-              {s.icon}
-            </a>
-          ))}
+          <div className="flex items-center gap-2">
+            {socials.map((s) => (
+              <a
+                key={s.label}
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.label}
+                className="rounded-md border border-border p-2.5 text-muted-foreground transition-colors hover:border-foreground/30 hover:text-foreground"
+              >
+                {s.icon}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </section>

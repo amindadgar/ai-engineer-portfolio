@@ -57,7 +57,6 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        glow: "hsl(var(--glow))",
         surface: {
           DEFAULT: "hsl(var(--surface))",
           hover: "hsl(var(--surface-hover))",

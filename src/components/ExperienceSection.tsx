@@ -1,3 +1,6 @@
+import { ArrowUpRight } from "lucide-react";
+import SectionHeading from "@/components/SectionHeading";
+
 const experiences = [
   {
     role: "AI Engineer",
@@ -44,66 +47,62 @@ const experiences = [
 
 const ExperienceSection = () => {
   return (
-    <section id="experience" className="section-padding bg-surface">
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          Work <span className="text-gradient">Experience</span>
-        </h2>
-        <div className="h-1 w-16 bg-primary rounded-full mb-12" />
+    <section id="experience" className="section-padding scroll-mt-24 border-t border-border">
+      <div className="mx-auto max-w-6xl px-6">
+        <SectionHeading index="03" kicker="Experience" title="Where I've worked" />
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-[7px] top-2 bottom-2 w-px bg-border hidden md:block" />
+        <div className="space-y-14">
+          {experiences.map((exp) => (
+            <article
+              key={exp.company}
+              className="grid gap-4 md:grid-cols-[200px_1fr] md:gap-10"
+            >
+              <div className="font-mono text-sm text-muted-foreground">
+                <p>{exp.period}</p>
+                <p className="mt-1 text-xs">{exp.location}</p>
+              </div>
 
-          <div className="space-y-12">
-            {experiences.map((exp, i) => (
-              <div key={i} className="relative md:pl-10">
-                {/* Dot */}
-                <div className="absolute left-0 top-2 w-[15px] h-[15px] rounded-full border-2 border-primary bg-background hidden md:block" />
+              <div>
+                <h3 className="text-lg font-semibold text-foreground">
+                  {exp.role}
+                  <span className="text-muted-foreground"> · </span>
+                  {exp.url ? (
+                    <a
+                      href={exp.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-foreground transition-colors hover:text-primary"
+                    >
+                      {exp.company}
+                      <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
+                    </a>
+                  ) : (
+                    exp.company
+                  )}
+                </h3>
 
-                <div className="p-6 rounded-xl border border-border bg-card hover:border-glow transition-colors">
-                  <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
-                    <div>
-                      <h3 className="text-lg font-semibold text-foreground">{exp.role}</h3>
-                      <p className="text-sm text-primary">
-                        {exp.url ? (
-                          <a href={exp.url} target="_blank" rel="noopener noreferrer" className="hover:underline">
-                            {exp.company} ↗
-                          </a>
-                        ) : (
-                          exp.company
-                        )}
-                      </p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-sm text-muted-foreground">{exp.period}</p>
-                      <p className="text-xs text-muted-foreground">{exp.location}</p>
-                    </div>
-                  </div>
+                <ul className="mt-4 space-y-2.5">
+                  {exp.highlights.map((h, j) => (
+                    <li key={j} className="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                      <span className="mt-[0.6rem] h-px w-3 shrink-0 bg-primary/60" />
+                      {h}
+                    </li>
+                  ))}
+                </ul>
 
-                  <ul className="space-y-2 mb-4">
-                    {exp.highlights.map((h, j) => (
-                      <li key={j} className="text-sm text-muted-foreground flex gap-2">
-                        <span className="text-primary mt-1 shrink-0">▹</span>
-                        {h}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="flex flex-wrap gap-2">
-                    {exp.stack.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2.5 py-1 text-xs rounded-md bg-secondary text-secondary-foreground"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {exp.stack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded border border-border px-2 py-0.5 font-mono text-xs text-muted-foreground"
+                    >
+                      {tech}
+                    </span>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>

@@ -6,58 +6,59 @@
 
 @layer base {
   :root {
-    --background: 240 10% 4%;
-    --foreground: 210 20% 92%;
+    --background: 222 16% 5%;
+    --foreground: 216 18% 90%;
 
-    --card: 240 8% 8%;
-    --card-foreground: 210 20% 92%;
+    --card: 222 14% 7%;
+    --card-foreground: 216 18% 90%;
 
-    --popover: 240 8% 8%;
-    --popover-foreground: 210 20% 92%;
+    --popover: 222 14% 7%;
+    --popover-foreground: 216 18% 90%;
 
-    --primary: 175 80% 50%;
-    --primary-foreground: 240 10% 4%;
+    --primary: 172 55% 52%;
+    --primary-foreground: 222 16% 5%;
 
-    --secondary: 240 6% 14%;
-    --secondary-foreground: 210 20% 85%;
+    --secondary: 222 10% 13%;
+    --secondary-foreground: 216 15% 80%;
 
-    --muted: 240 6% 12%;
-    --muted-foreground: 215 15% 55%;
+    --muted: 222 10% 11%;
+    --muted-foreground: 217 12% 60%;
 
-    --accent: 175 80% 50%;
-    --accent-foreground: 240 10% 4%;
+    --accent: 172 55% 52%;
+    --accent-foreground: 222 16% 5%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 240 6% 16%;
-    --input: 240 6% 16%;
-    --ring: 175 80% 50%;
+    --border: 222 10% 14%;
+    --input: 222 10% 14%;
+    --ring: 172 55% 52%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
-    --sidebar-background: 240 8% 6%;
-    --sidebar-foreground: 210 20% 85%;
-    --sidebar-primary: 175 80% 50%;
-    --sidebar-primary-foreground: 240 10% 4%;
-    --sidebar-accent: 240 6% 12%;
-    --sidebar-accent-foreground: 210 20% 85%;
-    --sidebar-border: 240 6% 16%;
-    --sidebar-ring: 175 80% 50%;
+    --sidebar-background: 222 14% 6%;
+    --sidebar-foreground: 216 15% 80%;
+    --sidebar-primary: 172 55% 52%;
+    --sidebar-primary-foreground: 222 16% 5%;
+    --sidebar-accent: 222 10% 11%;
+    --sidebar-accent-foreground: 216 15% 80%;
+    --sidebar-border: 222 10% 14%;
+    --sidebar-ring: 172 55% 52%;
 
     /* Custom tokens */
-    --glow: 175 80% 50%;
-    --surface: 240 8% 6%;
-    --surface-hover: 240 6% 10%;
-    --text-secondary: 215 15% 55%;
-    --gradient-primary: linear-gradient(135deg, hsl(175 80% 50%), hsl(195 90% 55%));
-    --gradient-hero: linear-gradient(180deg, hsl(240 10% 4%) 0%, hsl(240 12% 6%) 100%);
+    --surface: 222 14% 6%;
+    --surface-hover: 222 12% 9%;
+    --text-secondary: 217 12% 60%;
   }
 }
 
 @layer base {
   * {
     @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
@@ -73,24 +74,15 @@
   code, pre {
     font-family: 'JetBrains Mono', monospace;
   }
+
+  ::selection {
+    background-color: hsl(var(--primary) / 0.25);
+  }
 }
 
 @layer utilities {
-  .text-gradient {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(175 80% 50%), hsl(195 90% 55%));
-  }
-
-  .glow-sm {
-    box-shadow: 0 0 20px -5px hsl(175 80% 50% / 0.3);
-  }
-
-  .glow-md {
-    box-shadow: 0 0 40px -10px hsl(175 80% 50% / 0.25);
-  }
-
-  .border-glow {
-    border-color: hsl(175 80% 50% / 0.2);
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
   }
 
   .bg-surface {
@@ -102,7 +94,17 @@
   }
 
   .section-padding {
-    @apply py-20 md:py-28 lg:py-32;
+    @apply py-20 md:py-24 lg:py-28;
+  }
+
+  /* Mono uppercase label used for section kickers and metadata */
+  .label-mono {
+    font-family: 'JetBrains Mono', monospace;
+    @apply text-xs font-medium uppercase tracking-[0.2em] text-primary;
+  }
+
+  .card-hover {
+    @apply transition-colors duration-200 hover:border-foreground/20 hover:bg-surface-hover;
   }
 
   .animate-fade-up {
@@ -130,14 +132,4 @@
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.8; }
 }

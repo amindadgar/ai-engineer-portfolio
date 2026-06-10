@@ -3,13 +3,12 @@ import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { label: "About", type: "section", href: "#about" },
-  { label: "Experience", type: "section", href: "#experience" },
-  { label: "Projects", type: "section", href: "#projects" },
-  { label: "Skills", type: "section", href: "#skills" },
-  { label: "Writings", type: "section", href: "#writings" },
-  { label: "Volunteer Work", type: "section", href: "#volunteer" },
-  { label: "Contact", type: "section", href: "#contact" },
+  { label: "About", href: "#about" },
+  { label: "Experience", href: "#experience" },
+  { label: "Projects", href: "#projects" },
+  { label: "Skills", href: "#skills" },
+  { label: "Writings", href: "#writings" },
+  { label: "Community", href: "#volunteer" },
 ] as const;
 
 const linkClasses = "text-sm text-muted-foreground transition-colors hover:text-foreground";
@@ -19,10 +18,6 @@ const getSectionDestination = (href: string) => ({
   hash: href,
   search: "",
 });
-
-const isLinkActive = (href: string, pathname: string, hash: string, isHome: boolean) => {
-  return isHome && hash === href;
-};
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -42,7 +37,7 @@ const Navbar = () => {
   }, []);
 
   const renderNavLink = (link: (typeof navLinks)[number]) => {
-    const active = isLinkActive(link.href, location.pathname, location.hash, isHome);
+    const active = isHome && location.hash === link.href;
 
     return (
       <Link
@@ -58,23 +53,34 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/80 backdrop-blur-xl border-b border-border" : ""
+        scrolled ? "bg-background/85 backdrop-blur-xl border-b border-border" : ""
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-3">
-          <span className="text-lg font-semibold text-gradient">M. Amin Dadgar</span>
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+        <Link to="/" className="flex items-baseline gap-2">
+          <span className="text-sm font-semibold tracking-tight text-foreground">
+            Mohammad Amin Dadgar
+          </span>
+          <span className="hidden font-mono text-xs text-muted-foreground sm:inline">
+            AI Engineer
+          </span>
         </Link>
 
         {/* Desktop */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden items-center gap-7 md:flex">
           {navLinks.map(renderNavLink)}
+          <Link
+            to={getSectionDestination("#contact")}
+            className="rounded-md border border-border px-3.5 py-1.5 text-sm font-medium text-foreground transition-colors hover:border-foreground/30 hover:bg-secondary"
+          >
+            Contact
+          </Link>
         </div>
 
         {/* Mobile toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden text-foreground p-2"
+          className="p-2 text-foreground md:hidden"
           aria-label="Toggle menu"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -89,12 +95,17 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border px-6 py-4 space-y-3">
+        <div className="space-y-3 border-b border-border bg-background/95 px-6 py-4 backdrop-blur-xl md:hidden">
           {navLinks.map((link) => (
             <div key={link.href} onClick={() => setMobileOpen(false)}>
               {renderNavLink(link)}
             </div>
           ))}
+          <div onClick={() => setMobileOpen(false)}>
+            <Link to={getSectionDestination("#contact")} className={linkClasses}>
+              Contact
+            </Link>
+          </div>
         </div>
       )}
     </nav>

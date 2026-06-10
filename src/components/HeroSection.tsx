@@ -1,95 +1,104 @@
-import heroBg from "@/assets/hero-bg.jpg";
 import type { ReactNode } from "react";
+import { ArrowRight } from "lucide-react";
 import { AVATAR_URL } from "@/lib/avatar";
-import HandwritingName from "@/components/HandwritingName";
+
+const stats: { value: string; label: ReactNode; key: string }[] = [
+  { value: "4+", label: "Years of experience", key: "years-experience" },
+  {
+    value: "266",
+    key: "meetings-month-axis",
+    label: (
+      <>
+        Meetings/month processed by{" "}
+        <a
+          href="https://app.tryaxisapp.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-foreground underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground"
+        >
+          AXIS
+        </a>
+      </>
+    ),
+  },
+  {
+    value: "1.27k+",
+    key: "contributions-this-year",
+    label: "GitHub contributions this year",
+  },
+];
 
 const HeroSection = () => {
-  const stats: { value: string; label: ReactNode; key: string }[] = [
-    { value: "4+", label: "Years Experience", key: "years-experience" },
-    {
-      value: "266",
-      key: "meetings-month-axis",
-      label: (
-        <>
-          Meetings/Month under{" "}
-          <a
-            href="https://app.tryaxisapp.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary hover:underline"
-          >
-            AXIS
-          </a>{" "}
-          platform
-        </>
-      ),
-    },
-    {
-      value: "1.27k+",
-      key: "contributions-this-year",
-      label: "GitHub Contributions this year",
-    },
-  ];
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0">
-        <img
-          src={heroBg}
-          alt=""
-          width={1920}
-          height={1080}
-          className="w-full h-full object-cover opacity-30"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/80 to-background" />
-      </div>
+    <section className="relative flex min-h-screen items-center">
+      {/* Subtle backdrop */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        aria-hidden="true"
+        style={{
+          backgroundImage:
+            "radial-gradient(ellipse 60% 50% at 50% -10%, hsl(var(--primary) / 0.08), transparent)",
+        }}
+      />
 
-      {/* Content */}
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-        <div className="mb-6 animate-fade-in">
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-16 pt-32">
+        <div className="mb-8 flex items-center gap-4 animate-fade-in">
           <img
             src={AVATAR_URL}
             alt="Mohammad Amin Dadgar"
-            className="w-28 h-28 md:w-36 md:h-36 rounded-full border-2 border-primary/40 shadow-lg shadow-primary/20 object-cover mx-auto opacity-100"
+            className="h-14 w-14 rounded-full border border-border object-cover"
           />
+          <div>
+            <p className="label-mono">AI Engineer</p>
+            <p className="mt-1 flex items-center gap-2 text-sm text-muted-foreground">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              Open to new opportunities
+            </p>
+          </div>
         </div>
 
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-glow bg-primary/5 mb-8 animate-fade-in">
-          <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-          <span className="text-sm text-primary font-medium">AI Engineer</span>
-        </div>
+        <h1 className="max-w-3xl text-4xl font-semibold leading-[1.1] tracking-tight text-foreground animate-fade-up md:text-6xl">
+          Mohammad Amin Dadgar
+        </h1>
 
-        <div className="mb-6 animate-fade-up">
-          <HandwritingName />
-        </div>
-
-        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-up" style={{ animationDelay: "0.15s" }}>
-          Building production LLM systems, retrieval pipelines, and intelligent workflow automation.
-          4+ years turning AI research into real-world products.
+        <p
+          className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground animate-fade-up md:text-xl"
+          style={{ animationDelay: "0.15s" }}
+        >
+          I build production LLM systems, retrieval pipelines, and intelligent workflow
+          automation — turning AI research into reliable, real-world products.
         </p>
 
-        <div className="flex flex-wrap items-center justify-center gap-4 animate-fade-up" style={{ animationDelay: "0.3s" }}>
+        <div
+          className="mt-10 flex flex-wrap items-center gap-4 animate-fade-up"
+          style={{ animationDelay: "0.3s" }}
+        >
           <a
             href="#projects"
-            className="px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity glow-sm"
+            className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
           >
-            View Projects
+            View projects
+            <ArrowRight className="h-4 w-4" />
           </a>
           <a
             href="#contact"
-            className="px-6 py-3 rounded-lg border border-border text-foreground font-medium hover:bg-secondary transition-colors"
+            className="rounded-md border border-border px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-foreground/30 hover:bg-secondary"
           >
-            Get in Touch
+            Get in touch
           </a>
         </div>
 
         {/* Stats */}
-        <div className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto animate-fade-up" style={{ animationDelay: "0.45s" }}>
+        <div
+          className="mt-20 grid max-w-3xl grid-cols-1 gap-8 border-t border-border pt-8 sm:grid-cols-3 animate-fade-up"
+          style={{ animationDelay: "0.45s" }}
+        >
           {stats.map((stat) => (
-            <div key={stat.key} className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-gradient">{stat.value}</div>
-              <div className="text-xs text-muted-foreground mt-1">{stat.label}</div>
+            <div key={stat.key}>
+              <div className="font-mono text-2xl font-medium text-foreground md:text-3xl">
+                {stat.value}
+              </div>
+              <div className="mt-1.5 text-sm text-muted-foreground">{stat.label}</div>
             </div>
           ))}
         </div>
