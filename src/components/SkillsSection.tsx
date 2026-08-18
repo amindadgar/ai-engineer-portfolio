@@ -10,7 +10,20 @@ const skillCategories: { title: string; icon: LucideIcon; skills: string[] }[] =
   {
     title: "AI / LLM",
     icon: Brain,
-    skills: ["OpenAI API", "llama-index", "LangChain", "CrewAI", "RAG Evaluation"],
+    skills: [
+      "Open-source LLMs",
+      "GLM-5.2",
+      "Gemma 4",
+      "gpt-oss-120b",
+      "Hybrid RAG",
+      "Multi-Agent Systems",
+      "LLM Evaluation",
+      "Traceability",
+      "OpenAI API",
+      "llama-index",
+      "LangChain",
+      "CrewAI",
+    ],
   },
   {
     title: "Backend & Data",
@@ -23,9 +36,9 @@ const skillCategories: { title: string; icon: LucideIcon; skills: string[] }[] =
     skills: ["Apache Airflow", "Temporal", "RabbitMQ", "AWS S3 / MinIO"],
   },
   {
-    title: "Frontend & Product",
+    title: "Frontend & Product (Secondary)",
     icon: LayoutTemplate,
-    skills: ["React", "Vite", "Tailwind CSS", "Chrome Extensions (MV3)"],
+    skills: ["React", "Vite", "Tailwind CSS", "Chrome Extensions (MV3)", "AI-assisted Development"],
   },
   {
     title: "Tooling",

@@ -5,10 +5,10 @@ const projects = [
   {
     title: "AXIS",
     description:
-      "AI meeting intelligence app that turns recorded meetings into transcripts and actionable tasks. Built with React/TypeScript + Supabase with AI-powered processing.",
+      "End-to-end meeting intelligence product spanning a React web app, Chrome recording extension, and Supabase Edge Functions for transcription, structured task extraction, and contextual AI chat.",
     url: "https://tryaxisapp.com/",
     tags: ["TypeScript", "React", "Supabase", "OpenAI", "Chrome MV3"],
-    highlight: "266 meetings/month",
+    highlight: "Production AI product",
   },
   {
     title: "Hivemind Bot",
@@ -37,10 +37,10 @@ const projects = [
   {
     title: "Agents Workflow",
     description:
-      "CrewAI-based workflow system with Temporal integration, MongoDB persistence for step-level audit trails, Redis-backed chat history, and RAG pipelines.",
+      "Multi-agent workflow system using CrewAI and Temporal, with MongoDB persistence for step-level traceability, Redis-backed chat history, and RAG pipelines.",
     url: "https://github.com/TogetherCrew/agents-workflow",
     tags: ["Python", "CrewAI", "Temporal", "MongoDB", "RAG"],
-    highlight: "200+ communities",
+    highlight: "Multi-agent orchestration",
   },
   {
     title: "TC Analyzer Lib",

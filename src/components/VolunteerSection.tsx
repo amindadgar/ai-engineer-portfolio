@@ -3,21 +3,23 @@ import SectionHeading from "@/components/SectionHeading";
 
 const volunteerWork = [
   {
-    role: "Co-Founder",
-    organization: "AI Community",
-    url: "https://ai-community-gap.vercel.app/",
+    role: "Co-Founder & Organizer",
+    organization: "AI Talks Community",
+    url: "https://www.aitalkshub.ir/",
+    period: "Nov 2024 – Present",
     description:
-      "Co-founded an AI community hosting weekly meetups, talks, and events on LLMs, RAG, multi-agent systems, and cutting-edge AI research. Building a vibrant space for AI enthusiasts, researchers, and innovators to learn and collaborate.",
+      "AI Talks is a volunteer-run, bilingual community that meets weekly to explore practical, applied AI. Sessions and notes are free, public, and published in both English and Persian.",
     highlights: [
-      "Organized regular AI Talks series featuring leading researchers and practitioners",
-      "Curated events covering machine learning, NLP, and computer vision topics",
-      "Growing community of AI enthusiasts exploring the frontiers of artificial intelligence",
+      "Help organize, host, and present weekly sessions on production RAG, multi-agent systems, LLM costs, and workflow automation",
+      "Grew the initiative to 55+ sessions, 20+ speakers, 20+ topics, and 50+ bilingual session write-ups",
+      "Presented or contributed to 10+ sessions since joining as a speaker in Session 16",
     ],
   },
   {
     role: "Co-Founder",
     organization: "Cassandra AI Group",
     url: "https://www.youtube.com/@cassandraai",
+    period: "Oct 2021 – Oct 2023",
     description:
       "Co-founded Cassandra AI Group focused on academic workshops and educational content around artificial intelligence, making AI knowledge accessible through structured learning sessions.",
     highlights: [
@@ -53,6 +55,8 @@ const VolunteerSection = () => {
                   <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
                 </a>
               </h3>
+
+              <p className="mt-1 font-mono text-xs text-muted-foreground">{item.period}</p>
 
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 {item.description}

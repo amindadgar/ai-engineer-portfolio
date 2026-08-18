@@ -10,18 +10,22 @@ const AboutSection = () => {
         <div className="grid gap-10 md:grid-cols-2">
           <div className="space-y-4 leading-relaxed text-muted-foreground">
             <p>
-              I'm an AI Engineer focused on building production AI systems end-to-end — from data
-              ingestion and retrieval to user-facing copilots and workflow automation.
+              I'm a freelance AI engineer with <span className="font-medium text-foreground">5+ years of experience</span>,
+              specializing in the full lifecycle of LLM systems — from architecture and design to
+              development, deployment, evaluation, and ongoing maintenance.
             </p>
             <p>
-              Currently at <span className="font-medium text-foreground">AXIS</span>, I built an
-              AI-powered meeting intelligence platform across React, Chrome Extension (MV3), and
-              Supabase Edge Functions — supporting 266 meetings recorded per month.
+              I build reliable <span className="font-medium text-foreground">multi-agent systems</span> and{" "}
+              <span className="font-medium text-foreground">hybrid RAG pipelines</span>, with hands-on
+              expertise in open-source LLMs including GLM-5.2, Gemma 4, and gpt-oss-120b. I also
+              specialize in evaluation and traceability across retrieval, generation, agents, and
+              tool execution.
             </p>
             <p>
-              Previously at <span className="font-medium text-foreground">TogetherCrew</span>, I
-              developed LLM pipelines to analyze decentralized communities, designed 10+ Airflow
-              ETL pipelines, and orchestrated async workflows with Temporal and RabbitMQ.
+              Previous work includes <span className="font-medium text-foreground">AXIS</span>, an AI
+              meeting intelligence product spanning a React web app, recording extension, and
+              serverless AI workflows. I can also ship frontend applications through AI-assisted
+              and vibe-coding workflows, although AI and backend systems are my primary expertise.
             </p>
           </div>
 
@@ -53,9 +57,16 @@ const AboutSection = () => {
                 <h3 className="text-sm font-semibold text-foreground">Community</h3>
               </div>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                Co-founder of an AI Community Group hosting weekly meetups on LLMs, RAG, and
-                multi-agent systems. Previously co-founded Cassandra AI Group for academic
-                workshops.
+                Co-founder and organizer of{" "}
+                <a
+                  href="https://www.aitalkshub.ir/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-foreground transition-colors hover:text-primary"
+                >
+                  AI Talks
+                </a>, a volunteer-run bilingual community with 55+ applied AI sessions. Previously
+                co-founded Cassandra AI Group for academic workshops.
               </p>
             </div>
           </div>

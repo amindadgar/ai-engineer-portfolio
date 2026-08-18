@@ -3,28 +3,16 @@ import { ArrowRight } from "lucide-react";
 import { AVATAR_URL } from "@/lib/avatar";
 
 const stats: { value: string; label: ReactNode; key: string }[] = [
-  { value: "4+", label: "Years of experience", key: "years-experience" },
+  { value: "5+", label: "Years of experience", key: "years-experience" },
   {
-    value: "266",
-    key: "meetings-month-axis",
-    label: (
-      <>
-        Meetings/month processed by{" "}
-        <a
-          href="https://app.tryaxisapp.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-foreground underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground"
-        >
-          AXIS
-        </a>
-      </>
-    ),
+    value: "E2E",
+    key: "llm-lifecycle",
+    label: "LLM systems lifecycle",
   },
   {
-    value: "1.27k+",
-    key: "contributions-this-year",
-    label: "GitHub contributions this year",
+    value: "55+",
+    key: "ai-talks-sessions",
+    label: "Volunteer AI Talks sessions · AI Community founder",
   },
 ];
 
@@ -49,10 +37,10 @@ const HeroSection = () => {
             className="h-14 w-14 rounded-full border border-border object-cover"
           />
           <div>
-            <p className="label-mono">AI Engineer</p>
+            <p className="label-mono">Freelance AI Engineer</p>
             <p className="mt-1 flex items-center gap-2 text-sm text-muted-foreground">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-              Open to new opportunities
+              Available for freelance projects
             </p>
           </div>
         </div>
@@ -65,8 +53,8 @@ const HeroSection = () => {
           className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground animate-fade-up md:text-xl"
           style={{ animationDelay: "0.15s" }}
         >
-          I build production LLM systems, retrieval pipelines, and intelligent workflow
-          automation — turning AI research into reliable, real-world products.
+          I design, build, evaluate, and maintain production LLM systems, multi-agent
+          architectures, and hybrid RAG pipelines.
         </p>
 
         <div

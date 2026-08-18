@@ -3,6 +3,20 @@ import SectionHeading from "@/components/SectionHeading";
 
 const experiences = [
   {
+    role: "Freelance AI Engineer",
+    company: "Independent",
+    url: "https://amindadgar.com/",
+    period: "2026 – Present",
+    location: "Remote",
+    highlights: [
+      "Design, build, deploy, evaluate, and maintain LLM systems across their full production lifecycle",
+      "Build multi-agent systems with task decomposition, tool use, context management, and reliable orchestration",
+      "Create hybrid RAG pipelines combining dense and sparse retrieval, reranking, generation, and evaluation",
+      "Implement LLM evaluation and traceability for quality measurement, failure analysis, and production monitoring",
+    ],
+    stack: ["Python", "GLM-5.2", "Gemma 4", "gpt-oss-120b", "Hybrid RAG", "Multi-Agent Systems"],
+  },
+  {
     role: "AI Engineer",
     company: "AXIS",
     url: "https://tryaxisapp.com/",

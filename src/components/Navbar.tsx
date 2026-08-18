@@ -59,10 +59,10 @@ const Navbar = () => {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <Link to="/" className="flex items-baseline gap-2">
           <span className="text-sm font-semibold tracking-tight text-foreground">
-            Mohammad Amin Dadgar
+            amindadgar.com
           </span>
           <span className="hidden font-mono text-xs text-muted-foreground sm:inline">
-            AI Engineer
+            Freelance AI Engineer
           </span>
         </Link>
 
