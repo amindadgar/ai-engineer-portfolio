@@ -13,6 +13,8 @@ export type RecommendationItem = {
   relationship: string;
   dateLabel: string;
   excerpt: string;
+  /** One sentence taken verbatim from the excerpt, shown on the homepage. */
+  quote: string;
   sourceUrl: string;
   imageUrl?: string;
 };
@@ -386,7 +388,7 @@ export const allWritings = [...writings].sort(
   (left, right) => new Date(right.publishedAt).getTime() - new Date(left.publishedAt).getTime(),
 );
 
-export const latestWritings = allWritings.slice(0, 5);
+export const latestWritings = allWritings.slice(0, 3);
 
 export const recommendations: RecommendationItem[] = [
   {
@@ -396,6 +398,7 @@ export const recommendations: RecommendationItem[] = [
     dateLabel: "August 6, 2025",
     excerpt:
       "It was an absolute pleasure working with Mohammad Amin Dadgar at TogetherCrew. I had the privilege of witnessing his significant growth in this role as a Data Scientist and his continuous development of expertise in AI. He brings a collaborative spirit, sharp problem-solving abilities, and an incredibly positive energy to any team.",
+    quote: "He brings a collaborative spirit, sharp problem-solving abilities, and an incredibly positive energy to any team.",
     sourceUrl: LINKEDIN_PROFILE_URL,
     imageUrl:
       "https://media.licdn.com/dms/image/v2/C4D03AQGeQtcy0KHuPg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1534276309232?e=1778112000&v=beta&t=AnFThVPZaV7GE_wTYsSAM0H0OGjniW71nUAjf5z5dVY",
@@ -407,6 +410,7 @@ export const recommendations: RecommendationItem[] = [
     dateLabel: "May 8, 2025",
     excerpt:
       "Amin is a talented developer with a strong track record in building AI-driven products and data pipelines. He consistently brings a collaborative spirit, sharp problem-solving abilities, and positive energy to any team he joins.",
+    quote: "Amin is a talented developer with a strong track record in building AI-driven products and data pipelines.",
     sourceUrl: LINKEDIN_PROFILE_URL,
     imageUrl:
       "https://media.licdn.com/dms/image/v2/D4E03AQGssrXOF_wglQ/profile-displayphoto-scale_200_200/B4EZspKhZ.KkAY-/0/1765922183463?e=1778112000&v=beta&t=hc0OoqUKZWSc5x4LD4CD0wWw2f5aHuaTeh-TEh9MlJc",
@@ -418,6 +422,7 @@ export const recommendations: RecommendationItem[] = [
     dateLabel: "April 15, 2025",
     excerpt:
       "Amin is a great developer with knowledge about a variety of topics related to Artificial Intelligence, Software Engineering and Data Science. He is a fast learner who works hard and asks good questions, and it is always a pleasure to work with him.",
+    quote: "He is a fast learner who works hard and asks good questions, and it is always a pleasure to work with him.",
     sourceUrl: LINKEDIN_PROFILE_URL,
     imageUrl:
       "https://media.licdn.com/dms/image/v2/C5603AQHNWVIuuyAMRw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1556132014693?e=1778112000&v=beta&t=Nqh2mqg4Q1RfDYAf3maluNe1tyF3OHMlE8P6Z8WRYR0",
@@ -429,6 +434,7 @@ export const recommendations: RecommendationItem[] = [
     dateLabel: "April 8, 2025",
     excerpt:
       "It has been a pleasure working with Mohammad Amin Dadgar at TogetherCrew. As a Data and AI Engineer, his passion and hard work really stood out. His creative ideas and dedication made our projects better every day.",
+    quote: "His creative ideas and dedication made our projects better every day.",
     sourceUrl: LINKEDIN_PROFILE_URL,
     imageUrl: "/recommendations/behzad-rabiei.jpg",
   },
@@ -439,6 +445,7 @@ export const recommendations: RecommendationItem[] = [
     dateLabel: "August 1, 2024",
     excerpt:
       "I highly recommend Amin Dadgar, who I have had the pleasure of working with at HoopardVision and studying alongside in our master's program at University of Isfahan. He excels in his professional role, demonstrating creativity, expertise, and strong problem-solving abilities.",
+    quote: "He excels in his professional role, demonstrating creativity, expertise, and strong problem-solving abilities.",
     sourceUrl: LINKEDIN_PROFILE_URL,
   },
   {
@@ -448,6 +455,7 @@ export const recommendations: RecommendationItem[] = [
     dateLabel: "November 1, 2021",
     excerpt:
       "There is no better classmate than Amin. I highly recommend his expertise to any person looking for a computer engineer. He is professional in Artificial Intelligence, Machine Learning, Android Development, and Deep Learning, and would become an appreciated member of any team.",
+    quote: "There is no better classmate than Amin.",
     sourceUrl: LINKEDIN_PROFILE_URL,
   },
   {
@@ -457,6 +465,7 @@ export const recommendations: RecommendationItem[] = [
     dateLabel: "August 6, 2021",
     excerpt:
       "Since I know him, he was so passionate about learning and he was always active in different fields. He tries to do his best in his tasks, and I know him for four years and think he can be trusted with tasks you put on his shoulders.",
+    quote: "Since I know him, he was so passionate about learning and he was always active in different fields.",
     sourceUrl: LINKEDIN_PROFILE_URL,
   },
 ];

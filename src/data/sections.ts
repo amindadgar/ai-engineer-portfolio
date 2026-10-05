@@ -6,9 +6,7 @@ export const pageSections = [
   { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
   { id: "github", label: "GitHub" },
-  { id: "skills", label: "Skills" },
   { id: "writings", label: "Writings" },
-  { id: "volunteer", label: "Community" },
   { id: "contact", label: "Contact" },
 ] as const;
 

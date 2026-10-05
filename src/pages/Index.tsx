@@ -6,7 +6,6 @@ import ProjectsSection from "@/components/ProjectsSection";
 import GitHubActivitySection from "@/components/GitHubActivitySection";
 import SkillsSection from "@/components/SkillsSection";
 import RecommendationsSection from "@/components/RecommendationsSection";
-import VolunteerSection from "@/components/VolunteerSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import WritingsSection from "@/components/WritingsSection";
@@ -22,15 +21,14 @@ const Index = () => {
         <Navbar />
         <SectionNav />
         <HeroSection />
+        <SkillsSection />
         <AboutSection />
         <AskSection />
         <RecommendationsSection />
         <ExperienceSection />
         <ProjectsSection />
         <GitHubActivitySection />
-        <SkillsSection />
         <WritingsSection />
-        <VolunteerSection />
         <ContactSection />
         <Footer />
         <ChatLauncher />

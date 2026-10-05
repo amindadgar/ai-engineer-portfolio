@@ -147,13 +147,21 @@
   }
 
   .section-padding {
-    @apply py-20 md:py-24 lg:py-28;
+    @apply py-16 md:py-20;
   }
 
   /* Mono uppercase label used for section kickers and metadata */
   .label-mono {
     font-family: 'JetBrains Mono', monospace;
     @apply text-xs font-medium uppercase tracking-[0.2em] text-primary;
+  }
+
+  /* Swipeable rows that scroll but don't show a scrollbar. */
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 
   .card-hover {
