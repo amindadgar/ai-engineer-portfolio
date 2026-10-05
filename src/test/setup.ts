@@ -65,3 +65,9 @@ beforeEach(() => {
 afterEach(() => {
   vi.unstubAllGlobals();
 });
+
+// jsdom has no canvas; returning null makes canvas effects (e.g. GravityStars) use their static fallback.
+Object.defineProperty(HTMLCanvasElement.prototype, "getContext", {
+  writable: true,
+  value: () => null,
+});
