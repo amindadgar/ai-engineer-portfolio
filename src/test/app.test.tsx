@@ -8,20 +8,20 @@ const renderAtRoute = (path: string) => {
 };
 
 describe("portfolio app", () => {
-  it("renders exactly the latest five writings on the homepage", () => {
+  it("renders exactly the latest three writings on the homepage", () => {
     renderAtRoute("/");
 
     const writingsHeading = screen.getByRole("heading", { name: /recent writings/i });
     const writingsSection = writingsHeading.closest("section");
 
     expect(writingsSection).not.toBeNull();
-    expect(within(writingsSection as HTMLElement).getAllByRole("heading", { level: 3 })).toHaveLength(5);
+    expect(within(writingsSection as HTMLElement).getAllByRole("heading", { level: 3 })).toHaveLength(3);
 
     latestWritings.forEach((writing) => {
       expect(screen.getByText(writing.title)).toBeInTheDocument();
     });
 
-    allWritings.slice(5).forEach((writing) => {
+    allWritings.slice(3).forEach((writing) => {
       expect(screen.queryByText(writing.title)).not.toBeInTheDocument();
     });
   });
@@ -29,7 +29,7 @@ describe("portfolio app", () => {
   it("navigates to the writings archive from the homepage CTA", async () => {
     renderAtRoute("/");
 
-    fireEvent.click(screen.getByRole("link", { name: /view all writings/i }));
+    fireEvent.click(screen.getByRole("link", { name: /view all \d+ writings/i }));
 
     expect(await screen.findByRole("heading", { name: /essays, threads, and practical notes on/i })).toBeInTheDocument();
     expect(window.location.pathname).toBe("/writings");
@@ -69,7 +69,7 @@ describe("portfolio app", () => {
     });
   });
 
-  it("shows the recommendations cards and LinkedIn card links", () => {
+  it("shows every recommendation as a pull quote linking to LinkedIn", () => {
     renderAtRoute("/");
 
     const recommendationsHeading = screen.getByRole("heading", { name: /what colleagues say/i });
@@ -78,12 +78,15 @@ describe("portfolio app", () => {
     expect(recommendationsSection).not.toBeNull();
     expect(screen.queryByRole("link", { name: /visit linkedin/i })).not.toBeInTheDocument();
 
-    recommendations.forEach((recommendation) => {
-      const author = within(recommendationsSection as HTMLElement).getByText(recommendation.author);
-      const cardLink = author.closest("a");
+    // The marquee renders a second, inert copy for the seamless loop; only the first is reachable.
+    const quoteLinks = within(recommendationsSection as HTMLElement).getAllByRole("link");
+    expect(quoteLinks).toHaveLength(recommendations.length);
 
-      expect(cardLink).not.toBeNull();
-      expect(cardLink).toHaveAttribute("href", LINKEDIN_PROFILE_URL);
+    recommendations.forEach((recommendation, i) => {
+      expect(recommendation.excerpt).toContain(recommendation.quote);
+      expect(quoteLinks[i]).toHaveTextContent(recommendation.author);
+      expect(quoteLinks[i]).toHaveTextContent(recommendation.quote);
+      expect(quoteLinks[i]).toHaveAttribute("href", LINKEDIN_PROFILE_URL);
     });
   });
 });

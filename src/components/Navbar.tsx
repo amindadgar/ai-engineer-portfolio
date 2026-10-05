@@ -8,12 +8,10 @@ const navLinks = [
   { label: "Ask AI", href: "#ask" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
   { label: "Writings", href: "#writings" },
-  { label: "Community", href: "#volunteer" },
 ] as const;
 
-const linkClasses = "text-sm text-muted-foreground transition-colors hover:text-foreground";
+const linkClasses = "whitespace-nowrap text-sm text-muted-foreground transition-colors hover:text-foreground";
 
 const getSectionDestination = (href: string) => ({
   pathname: "/",
@@ -60,20 +58,21 @@ const Navbar = () => {
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <Link to="/" className="flex items-baseline gap-2">
-          <span className="text-sm font-semibold tracking-tight text-foreground">
+          <span className="whitespace-nowrap text-sm font-semibold tracking-tight text-foreground">
             amindadgar.com
           </span>
-          <span className="hidden font-mono text-xs text-muted-foreground sm:inline">
+          {/* Only where the links leave room for it; between md and lg it would wrap. */}
+          <span className="hidden whitespace-nowrap font-mono text-xs text-muted-foreground sm:inline md:hidden lg:inline">
             Freelance AI Engineer
           </span>
         </Link>
 
         {/* Desktop */}
-        <div className="hidden items-center gap-7 md:flex">
+        <div className="hidden items-center gap-5 md:flex lg:gap-7">
           {navLinks.map(renderNavLink)}
           <Link
             to={getSectionDestination("#contact")}
-            className="rounded-md border border-border px-3.5 py-1.5 text-sm font-medium text-foreground transition-colors hover:border-foreground/30 hover:bg-secondary"
+            className="whitespace-nowrap rounded-md border border-border px-3.5 py-1.5 text-sm font-medium text-foreground transition-colors hover:border-foreground/30 hover:bg-secondary"
           >
             Contact
           </Link>

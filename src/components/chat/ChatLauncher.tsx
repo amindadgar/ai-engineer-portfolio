@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { Sparkles } from "lucide-react";
 import ChatPanel from "@/components/chat/ChatPanel";
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from "@/components/ui/sheet";
+import { useChat } from "@/hooks/use-chat";
 
 /** Floating "Ask AI" button that opens the same chat in a side sheet; hidden while the Ask section is on screen. */
 const ChatLauncher = () => {
-  const [open, setOpen] = useState(false);
+  const { launcherOpen: open, setLauncherOpen: setOpen } = useChat();
   const [sectionVisible, setSectionVisible] = useState(false);
 
   useEffect(() => {

@@ -27,6 +27,11 @@ type ChatContextValue = {
   send: (text: string) => Promise<void>;
   reset: () => void;
   contactClicked: () => void;
+  /** Whether the floating chat sheet is open. */
+  launcherOpen: boolean;
+  setLauncherOpen: (open: boolean) => void;
+  /** Open the chat sheet and send a prepared question, e.g. from an "Ask AI about this" button. */
+  ask: (question: string) => void;
 };
 
 const ChatContext = createContext<ChatContextValue | null>(null);
@@ -53,6 +58,7 @@ export const ChatProvider = ({ children }: { children: ReactNode }) => {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [busy, setBusy] = useState(false);
   const [closed, setClosed] = useState(false);
+  const [launcherOpen, setLauncherOpen] = useState(false);
   const session = useRef<ChatSession | null>(null);
   const nextId = useRef(1);
   const turnstileContainer = useRef<HTMLDivElement>(null);
@@ -125,9 +131,18 @@ export const ChatProvider = ({ children }: { children: ReactNode }) => {
     if (session.current) recordContactClick(session.current.token);
   }, []);
 
+  const ask = useCallback(
+    (question: string) => {
+      setLauncherOpen(true);
+      // While a reply streams or the chat is closed, just show the chat; send() would drop the question anyway.
+      void send(question);
+    },
+    [send],
+  );
+
   const value = useMemo(
-    () => ({ messages, busy, closed, send, reset, contactClicked }),
-    [messages, busy, closed, send, reset, contactClicked],
+    () => ({ messages, busy, closed, send, reset, contactClicked, launcherOpen, setLauncherOpen, ask }),
+    [messages, busy, closed, send, reset, contactClicked, launcherOpen, ask],
   );
 
   return (

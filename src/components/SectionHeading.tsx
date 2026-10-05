@@ -8,7 +8,7 @@ type SectionHeadingProps = {
 };
 
 const SectionHeading = ({ index, kicker, title, description }: SectionHeadingProps) => (
-  <div className="mb-12 md:mb-14">
+  <div className="mb-10">
     <p className="label-mono mb-3">
       <span className="text-muted-foreground">{index}</span>
       <span className="mx-2 text-muted-foreground/50">/</span>
