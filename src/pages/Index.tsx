@@ -10,23 +10,30 @@ import VolunteerSection from "@/components/VolunteerSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import WritingsSection from "@/components/WritingsSection";
+import AskSection from "@/components/AskSection";
+import ChatLauncher from "@/components/chat/ChatLauncher";
+import { ChatProvider } from "@/hooks/use-chat";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <RecommendationsSection />
-      <ExperienceSection />
-      <ProjectsSection />
-      <GitHubActivitySection />
-      <SkillsSection />
-      <WritingsSection />
-      <VolunteerSection />
-      <ContactSection />
-      <Footer />
-    </div>
+    <ChatProvider>
+      <div className="min-h-screen bg-background">
+        <Navbar />
+        <HeroSection />
+        <AboutSection />
+        <AskSection />
+        <RecommendationsSection />
+        <ExperienceSection />
+        <ProjectsSection />
+        <GitHubActivitySection />
+        <SkillsSection />
+        <WritingsSection />
+        <VolunteerSection />
+        <ContactSection />
+        <Footer />
+        <ChatLauncher />
+      </div>
+    </ChatProvider>
   );
 };
 

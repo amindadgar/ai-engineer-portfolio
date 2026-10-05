@@ -15,7 +15,7 @@ const SkillsSection = () => {
   return (
     <section id="skills" className="section-padding scroll-mt-24 border-t border-border">
       <div className="mx-auto max-w-6xl px-6">
-        <SectionHeading index="06" kicker="Skills" title="Technical toolkit" />
+        <SectionHeading index="07" kicker="Skills" title="Technical toolkit" />
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {skillCategories.map((cat) => {

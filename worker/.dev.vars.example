@@ -2,3 +2,6 @@
 OPENROUTER_API_KEY=
 GITHUB_TOKEN=
 ADMIN_TOKEN=local-admin-token
+# Turnstile's "always passes" test secret; pair with site key 1x00000000000000000000AA on the frontend.
+TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA
+SESSION_SECRET=local-session-secret

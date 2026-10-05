@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { AVATAR_URL } from "@/lib/avatar";
 
 const stats: { value: string; label: ReactNode; key: string }[] = [
@@ -73,6 +73,13 @@ const HeroSection = () => {
             className="rounded-md border border-border px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-foreground/30 hover:bg-secondary"
           >
             Get in touch
+          </a>
+          <a
+            href="#ask"
+            className="inline-flex items-center gap-2 rounded-md px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+          >
+            <Sparkles className="h-4 w-4 text-primary" />
+            Ask my AI assistant
           </a>
         </div>
 

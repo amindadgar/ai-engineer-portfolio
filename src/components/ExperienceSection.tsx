@@ -6,7 +6,7 @@ const ExperienceSection = () => {
   return (
     <section id="experience" className="section-padding scroll-mt-24 border-t border-border">
       <div className="mx-auto max-w-6xl px-6">
-        <SectionHeading index="03" kicker="Experience" title="Where I've worked" />
+        <SectionHeading index="04" kicker="Experience" title="Where I've worked" />
 
         <div className="space-y-14">
           {experiences.map((exp) => (

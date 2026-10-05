@@ -6,7 +6,7 @@ const ProjectsSection = () => {
   return (
     <section id="projects" className="section-padding scroll-mt-24 border-t border-border">
       <div className="mx-auto max-w-6xl px-6">
-        <SectionHeading index="04" kicker="Projects" title="Selected work" />
+        <SectionHeading index="05" kicker="Projects" title="Selected work" />
 
         <div className="grid gap-px overflow-hidden rounded-lg border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (

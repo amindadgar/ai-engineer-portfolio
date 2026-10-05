@@ -7,17 +7,35 @@
   "routes": [{ "pattern": "api.amindadgar.com", "custom_domain": true }],
   "observability": { "enabled": true },
   "kv_namespaces": [{ "binding": "CACHE", "id": "25d93c1cae584f3fa19529ab4a7d46e6" }],
-  // Daily GitHub summary refresh (05:00 UTC).
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "amin-api-db",
+      "database_id": "1cd84024-c343-49c2-b6de-86d2ec0c663f",
+      "migrations_dir": "migrations"
+    }
+  ],
+  // Per-visitor burst limit for chat messages (period may only be 10 or 60 seconds).
+  "ratelimits": [{ "name": "CHAT_BURST", "namespace_id": "1001", "simple": { "limit": 5, "period": 60 } }],
+  // Daily GitHub summary refresh and usage-counter cleanup (05:00 UTC).
   "triggers": { "crons": ["0 5 * * *"] },
   "vars": {
     "GITHUB_USERNAME": "amindadgar",
     "SUMMARY_WINDOW_DAYS": "30",
     // OpenRouter model plus fallbacks, tried in order; all must support structured outputs. ~$0.002 per daily run.
     "SUMMARY_MODELS": "google/gemini-3.1-flash-lite,google/gemma-4-31b-it,qwen/qwen3.8-flash",
-    "ALLOWED_ORIGINS": "https://amindadgar.com,https://www.amindadgar.com,http://localhost:8080"
+    "ALLOWED_ORIGINS": "https://amindadgar.com,https://www.amindadgar.com,http://localhost:8080",
+    // Chat assistant: model plus fallbacks (~$0.002 per message) and abuse limits.
+    "CHAT_MODELS": "google/gemini-3.1-flash-lite,qwen/qwen3.8-flash",
+    "CHAT_DAILY_LIMIT_PER_VISITOR": "30",
+    "CHAT_DAILY_LIMIT_GLOBAL": "300",
+    "CHAT_MAX_TURNS": "12",
+    "OPENROUTER_BASE_URL": "https://openrouter.ai/api/v1"
   }
   // Secrets (set with `npx wrangler secret put <NAME>`, or in .dev.vars for local dev):
   //   OPENROUTER_API_KEY  - OpenRouter key (set a credit limit on it in the OpenRouter dashboard)
   //   GITHUB_TOKEN        - fine-grained, read-only, public repositories only
-  //   ADMIN_TOKEN         - random string guarding POST /admin/refresh-github-summary
+  //   ADMIN_TOKEN         - random string guarding the /admin/* routes
+  //   TURNSTILE_SECRET_KEY - secret of the Turnstile widget protecting chat sessions
+  //   SESSION_SECRET      - random string used to sign chat sessions and salt IP hashes
 }

@@ -6,7 +6,7 @@ const VolunteerSection = () => {
   return (
     <section id="volunteer" className="section-padding scroll-mt-24 border-t border-border">
       <div className="mx-auto max-w-6xl px-6">
-        <SectionHeading index="08" kicker="Community" title="Volunteer work" />
+        <SectionHeading index="09" kicker="Community" title="Volunteer work" />
 
         <div className="grid gap-4 md:grid-cols-2">
           {volunteerWork.map((item) => (

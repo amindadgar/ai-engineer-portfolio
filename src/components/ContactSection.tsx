@@ -31,7 +31,7 @@ const ContactSection = () => {
     <section id="contact" className="section-padding scroll-mt-24 border-t border-border">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
-          index="09"
+          index="10"
           kicker="Contact"
           title="Let's work together"
           description="I'm available for freelance AI projects, from LLM system design and development to evaluation, deployment, and long-term maintenance."
