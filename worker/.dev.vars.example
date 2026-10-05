@@ -1,0 +1,4 @@
+# Copy to .dev.vars for `npm run dev` (never commit .dev.vars).
+OPENROUTER_API_KEY=
+GITHUB_TOKEN=
+ADMIN_TOKEN=local-admin-token

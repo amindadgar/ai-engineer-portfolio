@@ -1,63 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
-
-const experiences = [
-  {
-    role: "Freelance AI Engineer",
-    company: "Independent",
-    url: "https://amindadgar.com/",
-    period: "2026 – Present",
-    location: "Remote",
-    highlights: [
-      "Design, build, deploy, evaluate, and maintain LLM systems across their full production lifecycle",
-      "Build multi-agent systems with task decomposition, tool use, context management, and reliable orchestration",
-      "Create hybrid RAG pipelines combining dense and sparse retrieval, reranking, generation, and evaluation",
-      "Implement LLM evaluation and traceability for quality measurement, failure analysis, and production monitoring",
-    ],
-    stack: ["Python", "GLM-5.2", "Gemma 4", "gpt-oss-120b", "Hybrid RAG", "Multi-Agent Systems"],
-  },
-  {
-    role: "AI Engineer",
-    company: "AXIS",
-    url: "https://tryaxisapp.com/",
-    period: "Oct 2025 – Apr 2026",
-    location: "Remote",
-    highlights: [
-      "Built an AI meeting platform across three codebases: Web App (React/TS), Chrome MV3 extension, and Supabase Edge Functions",
-      "Implemented schema-constrained LLM outputs for reliable meeting-to-task conversion",
-      "Added contextual AI chat on meeting history with session/message persistence and token tracking",
-      "Improved production readiness with tenant-scoped data access and secure client/backend boundaries",
-    ],
-    stack: ["TypeScript", "React", "Supabase", "PostgreSQL", "OpenAI API", "Chrome MV3"],
-  },
-  {
-    role: "AI Engineer",
-    company: "TogetherCrew",
-    url: "https://github.com/TogetherCrew",
-    period: "Oct 2023 – Oct 2025",
-    location: "Remote",
-    highlights: [
-      "Built LLM pipelines to analyze decentralized communities across Telegram, Discord, Discourse, Notion, and more",
-      "Developed RAG systems with llama-index, adding caching, deduplication, and time-indexed ingestion — boosting accuracy by 30%",
-      "Designed and deployed 10+ Airflow ETL pipelines for embedding, summarization, and transformation tasks",
-      "Orchestrated high-reliability async workflows with Temporal and RabbitMQ, enabling 18+ concurrent tasks",
-      "Evaluated RAG output via custom metrics improving quality by 40%",
-    ],
-    stack: ["Python", "MongoDB", "Neo4j", "Airflow", "Temporal", "Docker", "RabbitMQ", "LangChain", "llama-index"],
-  },
-  {
-    role: "DevOps Engineer",
-    company: "Hoopad Vision Company",
-    period: "Contract",
-    location: "On-site",
-    highlights: [
-      "Dockerized 7+ microservices, accelerating deployment times by ~40%",
-      "Enhanced developer workflows for a 10-person team, improving onboarding speed",
-      "Led Git adoption and implemented CI pipeline, reducing manual QA by 30–50%",
-    ],
-    stack: ["Python", "Pytest", "Docker", "Git"],
-  },
-];
+import { experiences } from "@/data/portfolio";
 
 const ExperienceSection = () => {
   return (

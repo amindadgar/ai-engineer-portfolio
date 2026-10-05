@@ -56,3 +56,12 @@ Object.defineProperty(globalThis, "IntersectionObserver", {
   writable: true,
   value: IntersectionObserver,
 });
+
+// Tests must never reach the real API; individual tests can override this with their own mock.
+beforeEach(() => {
+  vi.stubGlobal("fetch", vi.fn(() => Promise.reject(new Error("Network disabled in tests"))));
+});
+
+afterEach(() => {
+  vi.unstubAllGlobals();
+});

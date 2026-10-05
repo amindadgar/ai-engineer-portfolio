@@ -1,5 +1,7 @@
 import { GraduationCap, Users } from "lucide-react";
+import Emphasized from "@/components/Emphasized";
 import SectionHeading from "@/components/SectionHeading";
+import { education, profile } from "@/data/portfolio";
 
 const AboutSection = () => {
   return (
@@ -9,24 +11,11 @@ const AboutSection = () => {
 
         <div className="grid gap-10 md:grid-cols-2">
           <div className="space-y-4 leading-relaxed text-muted-foreground">
-            <p>
-              I'm a freelance AI engineer with <span className="font-medium text-foreground">5+ years of experience</span>,
-              specializing in the full lifecycle of LLM systems — from architecture and design to
-              development, deployment, evaluation, and ongoing maintenance.
-            </p>
-            <p>
-              I build reliable <span className="font-medium text-foreground">multi-agent systems</span> and{" "}
-              <span className="font-medium text-foreground">hybrid RAG pipelines</span>, with hands-on
-              expertise in open-source LLMs including GLM-5.2, Gemma 4, and gpt-oss-120b. I also
-              specialize in evaluation and traceability across retrieval, generation, agents, and
-              tool execution.
-            </p>
-            <p>
-              Previous work includes <span className="font-medium text-foreground">AXIS</span>, an AI
-              meeting intelligence product spanning a React web app, recording extension, and
-              serverless AI workflows. I can also ship frontend applications through AI-assisted
-              and vibe-coding workflows, although AI and backend systems are my primary expertise.
-            </p>
+            {profile.about.map((paragraph) => (
+              <p key={paragraph}>
+                <Emphasized text={paragraph} />
+              </p>
+            ))}
           </div>
 
           <div className="space-y-4">
@@ -36,18 +25,14 @@ const AboutSection = () => {
                 <h3 className="text-sm font-semibold text-foreground">Education</h3>
               </div>
               <div className="space-y-4">
-                <div>
-                  <p className="text-sm font-medium text-foreground">M.Sc. Artificial Intelligence</p>
-                  <p className="mt-0.5 text-sm text-muted-foreground">
-                    University of Isfahan · GPA 3.66/4.0
-                  </p>
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-foreground">B.Sc. Computer Engineering</p>
-                  <p className="mt-0.5 text-sm text-muted-foreground">
-                    University of Kashan · GPA 3.25/4.0
-                  </p>
-                </div>
+                {education.map((item) => (
+                  <div key={item.degree}>
+                    <p className="text-sm font-medium text-foreground">{item.degree}</p>
+                    <p className="mt-0.5 text-sm text-muted-foreground">
+                      {item.school} · {item.detail}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
 
