@@ -16,7 +16,7 @@ const RecommendationsSection = () => {
     <section id="recommendations" className="section-padding scroll-mt-24 border-t border-border">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
-          index="02"
+          index="03"
           kicker="Recommendations"
           title="What colleagues say"
           description="Words from people I've worked with — managers, teammates, and collaborators."

@@ -1,10 +1,12 @@
+import { createChatSession, handleChat, listConversations, recordContactClick } from "./chat";
 import { corsHeaders } from "./cors";
+import { pruneExpiredCounters } from "./limits";
 import { SUMMARY_KEY, refreshGitHubSummary } from "./refresh";
 
-const json = (body: unknown, init: ResponseInit & { headers?: Record<string, string> } = {}) =>
+const jsonResponse = (body: unknown, status = 200, headers: Record<string, string> = {}) =>
   new Response(JSON.stringify(body), {
-    ...init,
-    headers: { "Content-Type": "application/json; charset=utf-8", ...init.headers },
+    status,
+    headers: { "Content-Type": "application/json; charset=utf-8", ...headers },
   });
 
 const sha256 = async (value: string) =>
@@ -20,40 +22,59 @@ const isAdmin = async (request: Request, env: Env): Promise<boolean> => {
 };
 
 export default {
-  async fetch(request, env): Promise<Response> {
+  async fetch(request, env, ctx): Promise<Response> {
     const url = new URL(request.url);
     const cors = corsHeaders(request, env);
+    const json = (body: unknown, status = 200, extra: Record<string, string> = {}) =>
+      jsonResponse(body, status, { ...cors, ...extra });
+    const route = `${request.method} ${url.pathname}`;
 
     if (request.method === "OPTIONS") {
       return new Response(null, { status: 204, headers: cors });
     }
 
-    if (request.method === "GET" && url.pathname === "/health") {
-      return json({ ok: true }, { headers: cors });
+    // Browser-only endpoints: refuse other origins outright rather than relying on CORS alone.
+    if (url.pathname.startsWith("/chat") && !cors["Access-Control-Allow-Origin"]) {
+      return json({ error: "forbidden_origin" }, 403);
     }
 
-    if (request.method === "GET" && url.pathname === "/github-summary") {
-      const summary = await env.CACHE.get(SUMMARY_KEY);
-      if (!summary) return json({ error: "not_ready" }, { status: 404, headers: cors });
-      return new Response(summary, {
-        headers: {
-          ...cors,
-          "Content-Type": "application/json; charset=utf-8",
-          "Cache-Control": "public, max-age=600",
-        },
-      });
-    }
+    try {
+      switch (route) {
+        case "GET /health":
+          return json({ ok: true });
 
-    if (request.method === "POST" && url.pathname === "/admin/refresh-github-summary") {
-      if (!(await isAdmin(request, env))) return json({ error: "unauthorized" }, { status: 401 });
-      try {
-        return json(await refreshGitHubSummary(env));
-      } catch (e) {
-        return json({ error: e instanceof Error ? e.message : String(e) }, { status: 500 });
+        case "GET /github-summary": {
+          const summary = await env.CACHE.get(SUMMARY_KEY);
+          if (!summary) return json({ error: "not_ready" }, 404);
+          return new Response(summary, {
+            headers: { ...cors, "Content-Type": "application/json; charset=utf-8", "Cache-Control": "public, max-age=600" },
+          });
+        }
+
+        case "POST /chat/session":
+          return await createChatSession(request, env, json);
+
+        case "POST /chat":
+          return await handleChat(request, env, ctx, json, cors);
+
+        case "POST /chat/contact-click":
+          return await recordContactClick(request, env, json);
+
+        case "POST /admin/refresh-github-summary":
+          if (!(await isAdmin(request, env))) return json({ error: "unauthorized" }, 401);
+          return json(await refreshGitHubSummary(env));
+
+        case "GET /admin/conversations":
+          if (!(await isAdmin(request, env))) return json({ error: "unauthorized" }, 401);
+          return json(await listConversations(env, Number(url.searchParams.get("days") ?? 7)));
+
+        default:
+          return json({ error: "not_found" }, 404);
       }
+    } catch (e) {
+      console.error(`${route} failed:`, e);
+      return json({ error: "internal_error" }, 500);
     }
-
-    return json({ error: "not_found" }, { status: 404, headers: cors });
   },
 
   async scheduled(_controller, env, ctx) {
@@ -63,5 +84,6 @@ export default {
         (e) => console.error("GitHub summary refresh failed:", e),
       ),
     );
+    ctx.waitUntil(pruneExpiredCounters(env.DB).catch((e) => console.error("Counter cleanup failed:", e)));
   },
 } satisfies ExportedHandler<Env>;

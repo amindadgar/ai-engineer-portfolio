@@ -161,7 +161,7 @@ const GitHubActivitySection = () => {
     <section id="github" className="section-padding scroll-mt-24 border-t border-border">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
-          index="05"
+          index="06"
           kicker="GitHub"
           title="Recently on GitHub"
           description="A daily, AI-written digest of what I've been building in public over the last 30 days."

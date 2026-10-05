@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { dedupeCommits, indexEvents, type ActivityDigest, type RepoActivity } from "./github";
 import { assembleSummary, fallbackSummary, hasActivity, parseSummary, renderDigest } from "./summary";
-import { isAllowedOrigin } from "./cors";
+import { corsHeaders, isAllowedOrigin } from "./cors";
 
 const digest: ActivityDigest = {
   username: "amindadgar",
@@ -188,6 +188,14 @@ describe("fallback and assembly", () => {
     const text = renderDigest(digest);
     expect(text).toContain("Repo amindadgar/torob-mcp (fork, TypeScript): MCP server for Torob");
     expect(text).toContain("opened #1 in mmdju/torob-mcp: Brand and city filters");
+  });
+});
+
+describe("corsHeaders", () => {
+  it("allows the Authorization header used by chat sessions", () => {
+    const request = new Request("https://api.amindadgar.com/chat", { headers: { Origin: "https://amindadgar.com" } });
+    const headers = corsHeaders(request, { ALLOWED_ORIGINS: "https://amindadgar.com" } as unknown as Env);
+    expect(headers["Access-Control-Allow-Headers"]).toContain("Authorization");
   });
 });
 
