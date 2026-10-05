@@ -1,5 +1,6 @@
 import { Database, ShieldCheck, Zap } from "lucide-react";
 import ChatPanel from "@/components/chat/ChatPanel";
+import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 
 const notes = [
@@ -30,7 +31,7 @@ const AskSection = () => (
         description="Curious whether I'm a fit for your project? Ask the assistant I built about my experience, projects, writing, and recent work."
       />
 
-      <div className="grid gap-6 lg:grid-cols-[1fr_280px]">
+      <Reveal className="grid gap-6 lg:grid-cols-[1fr_280px]">
         <ChatPanel className="h-[34rem]" />
 
         <ul className="space-y-5">
@@ -44,7 +45,7 @@ const AskSection = () => (
             </li>
           ))}
         </ul>
-      </div>
+      </Reveal>
     </div>
   </section>
 );

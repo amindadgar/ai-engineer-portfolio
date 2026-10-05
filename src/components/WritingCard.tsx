@@ -20,7 +20,7 @@ const WritingCard = ({ writing, compact = false }: WritingCardProps) => {
       href={writing.url}
       target="_blank"
       rel="noopener noreferrer"
-      className={cn("group block rounded-lg border border-border bg-card p-6 card-hover", compact && "h-full")}
+      className={cn("spotlight group block rounded-lg border border-border bg-card p-6 card-hover", compact && "h-full")}
     >
       <div className="flex items-start justify-between gap-4">
         <div>

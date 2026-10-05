@@ -179,6 +179,66 @@
   }
 }
 
+/* Scroll reveal: elements rise into place the first time they enter the viewport (see Reveal.tsx). */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  /* Includes the hover background fade, since this rule replaces any transition utility on the same element. */
+  transition:
+    opacity 0.7s ease-out var(--reveal-delay, 0ms),
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms),
+    background-color 0.2s;
+}
+
+.reveal[data-shown] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Cursor spotlight: a soft glow inside the card and a brighter rim on its border, following the pointer.
+   Positions are set by useSpotlight. */
+.spotlight {
+  position: relative;
+  background-image: radial-gradient(
+    420px circle at var(--spot-x, -999px) var(--spot-y, -999px),
+    hsl(var(--primary) / 0.11),
+    transparent 45%
+  );
+}
+
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  padding: 1px;
+  border-radius: inherit;
+  background: radial-gradient(
+    260px circle at var(--spot-x, -999px) var(--spot-y, -999px),
+    hsl(var(--primary) / 0.85),
+    transparent 45%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.spotlight:hover::before {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 @keyframes fadeUp {
   from {
     opacity: 0;

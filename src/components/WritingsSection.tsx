@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import WritingCard from "@/components/WritingCard";
 import { allWritings, latestWritings } from "@/data/portfolio";
@@ -16,8 +17,10 @@ const WritingsSection = () => {
         />
 
         <div className="grid gap-4 md:grid-cols-3">
-          {latestWritings.map((writing) => (
-            <WritingCard key={writing.title} writing={writing} compact />
+          {latestWritings.map((writing, i) => (
+            <Reveal key={writing.title} delay={i * 90}>
+              <WritingCard writing={writing} compact />
+            </Reveal>
           ))}
         </div>
 

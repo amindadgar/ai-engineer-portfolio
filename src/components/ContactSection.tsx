@@ -1,5 +1,6 @@
 import { Mail } from "lucide-react";
 import type { ReactNode } from "react";
+import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import { profile, socials, type SocialId } from "@/data/portfolio";
 
@@ -37,7 +38,7 @@ const ContactSection = () => {
           description="I'm available for freelance AI projects, from LLM system design and development to evaluation, deployment, and long-term maintenance."
         />
 
-        <div className="flex flex-wrap items-center gap-4">
+        <Reveal className="flex flex-wrap items-center gap-4">
           <a
             href={`mailto:${profile.email}`}
             className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
@@ -60,7 +61,7 @@ const ContactSection = () => {
               </a>
             ))}
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

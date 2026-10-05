@@ -1,6 +1,7 @@
 import { useRef, useState, type KeyboardEvent } from "react";
 import { ArrowUpRight } from "lucide-react";
 import AskAboutButton from "@/components/chat/AskAboutButton";
+import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import { experiences } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
@@ -41,7 +42,7 @@ const ExperienceSection = () => {
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading index="04" kicker="Experience" title="Where I've worked" />
 
-        <div className="grid gap-6 md:grid-cols-[220px_1fr] md:gap-10">
+        <Reveal className="grid gap-6 md:grid-cols-[220px_1fr] md:gap-10">
           <div
             role="tablist"
             aria-label="Roles"
@@ -131,7 +132,7 @@ const ExperienceSection = () => {
               </article>
             ))}
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

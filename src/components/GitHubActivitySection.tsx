@@ -1,5 +1,6 @@
 import { formatDistanceToNow } from "date-fns";
 import { ArrowUpRight, Sparkles } from "lucide-react";
+import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useGitHubSummary, type GitHubSummary } from "@/hooks/use-github-summary";
@@ -32,7 +33,7 @@ const SummaryCard = ({ summary }: { summary: GitHubSummary }) => {
   const anyCapped = summary.repos.some((r) => r.commitsCapped);
   return (
     <div className="grid gap-4 lg:grid-cols-[1fr_300px]">
-      <div className="rounded-lg border border-border bg-card p-6 md:p-8">
+      <Reveal className="spotlight rounded-lg border border-border bg-card p-6 md:p-8">
         <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
           <p className="inline-flex items-center gap-2 font-mono text-xs text-primary">
             <Sparkles className="h-3.5 w-3.5" />
@@ -88,10 +89,10 @@ const SummaryCard = ({ summary }: { summary: GitHubSummary }) => {
             ? `Written by ${shortModelName(summary.model)} from public commits, pull requests, and releases. Refreshed daily.`
             : "Built from public commits, pull requests, and releases. Refreshed daily."}
         </p>
-      </div>
+      </Reveal>
 
-      <div className="space-y-4">
-        <div className="rounded-lg border border-border bg-card p-6">
+      <Reveal delay={120} className="space-y-4">
+        <div className="spotlight rounded-lg border border-border bg-card p-6">
           <div className="grid grid-cols-2 gap-4">
             <div>
               <div className="font-mono text-2xl font-medium text-foreground">
@@ -113,7 +114,7 @@ const SummaryCard = ({ summary }: { summary: GitHubSummary }) => {
         </div>
 
         {summary.repos.length > 0 && (
-          <div className="rounded-lg border border-border bg-card p-6">
+          <div className="spotlight rounded-lg border border-border bg-card p-6">
             <ul className="space-y-3">
               {summary.repos.map((repo) => (
                 <li key={repo.name}>
@@ -146,7 +147,7 @@ const SummaryCard = ({ summary }: { summary: GitHubSummary }) => {
           View GitHub profile
           <ArrowUpRight className="h-4 w-4" />
         </a>
-      </div>
+      </Reveal>
     </div>
   );
 };
