@@ -1,56 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
-
-const projects = [
-  {
-    title: "AXIS",
-    description:
-      "End-to-end meeting intelligence product spanning a React web app, Chrome recording extension, and Supabase Edge Functions for transcription, structured task extraction, and contextual AI chat.",
-    url: "https://tryaxisapp.com/",
-    tags: ["TypeScript", "React", "Supabase", "OpenAI", "Chrome MV3"],
-    highlight: "Production AI product",
-  },
-  {
-    title: "Hivemind Bot",
-    description:
-      "Message-driven LLM assistant utilizing a RAG pipeline, integrating with FastAPI, RabbitMQ, and Temporal for scalable community analytics.",
-    url: "https://github.com/TogetherCrew/hivemind-bot",
-    tags: ["Python", "RAG", "llama-index", "RabbitMQ", "Temporal"],
-    highlight: "Multi-interface LLM",
-  },
-  {
-    title: "Airflow DAGs",
-    description:
-      "Orchestrated analyzer pipelines, data vectorization with ETL (embedding cache, deduplication, streaming), platform data extraction, and violation-detection classification.",
-    url: "https://github.com/TogetherCrew/airflow-dags",
-    tags: ["Python", "Airflow", "ETL", "Embeddings"],
-    highlight: "10+ pipelines",
-  },
-  {
-    title: "Temporal Worker",
-    description:
-      "Temporal workflows in Python to orchestrate ETL pipelines (website & MediaWiki ingestion) and generate summaries using MongoDB, Qdrant, Redis, and PostgreSQL.",
-    url: "https://github.com/TogetherCrew/temporal-worker-python",
-    tags: ["Python", "Temporal", "MongoDB", "Qdrant", "Redis"],
-    highlight: "Fault-tolerant ETL",
-  },
-  {
-    title: "Agents Workflow",
-    description:
-      "Multi-agent workflow system using CrewAI and Temporal, with MongoDB persistence for step-level traceability, Redis-backed chat history, and RAG pipelines.",
-    url: "https://github.com/TogetherCrew/agents-workflow",
-    tags: ["Python", "CrewAI", "Temporal", "MongoDB", "RAG"],
-    highlight: "Multi-agent orchestration",
-  },
-  {
-    title: "TC Analyzer Lib",
-    description:
-      "Core analytics library for community analysis, providing graph-based metrics and behavioral insights at scale.",
-    url: "https://github.com/TogetherCrew/tc_analyzer_lib",
-    tags: ["Python", "Neo4j", "Analytics", "Graph DB"],
-    highlight: "Open source",
-  },
-];
+import { projects } from "@/data/portfolio";
 
 const ProjectsSection = () => {
   return (

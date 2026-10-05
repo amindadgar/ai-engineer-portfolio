@@ -17,6 +17,276 @@ export type RecommendationItem = {
   imageUrl?: string;
 };
 
+export type EducationItem = {
+  degree: string;
+  school: string;
+  detail: string;
+};
+
+export type ExperienceItem = {
+  role: string;
+  company: string;
+  url?: string;
+  period: string;
+  location: string;
+  highlights: string[];
+  stack: string[];
+};
+
+export type ProjectItem = {
+  title: string;
+  description: string;
+  url: string;
+  tags: string[];
+  highlight: string;
+};
+
+export type SkillCategoryId = "languages" | "ai" | "backend" | "workflow" | "frontend" | "tooling";
+
+export type SkillCategory = {
+  id: SkillCategoryId;
+  title: string;
+  skills: string[];
+};
+
+export type VolunteerItem = {
+  role: string;
+  organization: string;
+  url: string;
+  period: string;
+  description: string;
+  highlights: string[];
+};
+
+export type SocialId = "github" | "linkedin" | "medium" | "x";
+
+export type SocialLink = {
+  id: SocialId;
+  label: string;
+  url: string;
+};
+
+// Single source of truth for the site sections and the "Ask my AI" chatbot knowledge.
+// Text wrapped in **double asterisks** is rendered as emphasized text on the site.
+export const profile = {
+  name: "Mohammad Amin Dadgar",
+  title: "Freelance AI Engineer",
+  availability: "Available for freelance projects",
+  tagline:
+    "I design, build, evaluate, and maintain production LLM systems, multi-agent architectures, and hybrid RAG pipelines.",
+  about: [
+    "I'm a freelance AI engineer with **5+ years of experience**, specializing in the full lifecycle of LLM systems — from architecture and design to development, deployment, evaluation, and ongoing maintenance.",
+    "I build reliable **multi-agent systems** and **hybrid RAG pipelines**, with hands-on expertise in open-source LLMs including GLM-5.2, Gemma 4, and gpt-oss-120b. I also specialize in evaluation and traceability across retrieval, generation, agents, and tool execution.",
+    "Previous work includes **AXIS**, an AI meeting intelligence product spanning a React web app, recording extension, and serverless AI workflows. I can also ship frontend applications through AI-assisted and vibe-coding workflows, although AI and backend systems are my primary expertise.",
+  ],
+  email: "dadgaramin96@gmail.com",
+  githubUsername: "amindadgar",
+};
+
+export const education: EducationItem[] = [
+  {
+    degree: "M.Sc. Artificial Intelligence",
+    school: "University of Isfahan",
+    detail: "GPA 3.66/4.0",
+  },
+  {
+    degree: "B.Sc. Computer Engineering",
+    school: "University of Kashan",
+    detail: "GPA 3.25/4.0",
+  },
+];
+
+export const experiences: ExperienceItem[] = [
+  {
+    role: "Freelance AI Engineer",
+    company: "Independent",
+    url: "https://amindadgar.com/",
+    period: "2026 – Present",
+    location: "Remote",
+    highlights: [
+      "Design, build, deploy, evaluate, and maintain LLM systems across their full production lifecycle",
+      "Build multi-agent systems with task decomposition, tool use, context management, and reliable orchestration",
+      "Create hybrid RAG pipelines combining dense and sparse retrieval, reranking, generation, and evaluation",
+      "Implement LLM evaluation and traceability for quality measurement, failure analysis, and production monitoring",
+    ],
+    stack: ["Python", "GLM-5.2", "Gemma 4", "gpt-oss-120b", "Hybrid RAG", "Multi-Agent Systems"],
+  },
+  {
+    role: "AI Engineer",
+    company: "AXIS",
+    url: "https://tryaxisapp.com/",
+    period: "Oct 2025 – Apr 2026",
+    location: "Remote",
+    highlights: [
+      "Built an AI meeting platform across three codebases: Web App (React/TS), Chrome MV3 extension, and Supabase Edge Functions",
+      "Implemented schema-constrained LLM outputs for reliable meeting-to-task conversion",
+      "Added contextual AI chat on meeting history with session/message persistence and token tracking",
+      "Improved production readiness with tenant-scoped data access and secure client/backend boundaries",
+    ],
+    stack: ["TypeScript", "React", "Supabase", "PostgreSQL", "OpenAI API", "Chrome MV3"],
+  },
+  {
+    role: "AI Engineer",
+    company: "TogetherCrew",
+    url: "https://github.com/TogetherCrew",
+    period: "Oct 2023 – Oct 2025",
+    location: "Remote",
+    highlights: [
+      "Built LLM pipelines to analyze decentralized communities across Telegram, Discord, Discourse, Notion, and more",
+      "Developed RAG systems with llama-index, adding caching, deduplication, and time-indexed ingestion — boosting accuracy by 30%",
+      "Designed and deployed 10+ Airflow ETL pipelines for embedding, summarization, and transformation tasks",
+      "Orchestrated high-reliability async workflows with Temporal and RabbitMQ, enabling 18+ concurrent tasks",
+      "Evaluated RAG output via custom metrics improving quality by 40%",
+    ],
+    stack: ["Python", "MongoDB", "Neo4j", "Airflow", "Temporal", "Docker", "RabbitMQ", "LangChain", "llama-index"],
+  },
+  {
+    role: "DevOps Engineer",
+    company: "Hoopad Vision Company",
+    period: "Contract",
+    location: "On-site",
+    highlights: [
+      "Dockerized 7+ microservices, accelerating deployment times by ~40%",
+      "Enhanced developer workflows for a 10-person team, improving onboarding speed",
+      "Led Git adoption and implemented CI pipeline, reducing manual QA by 30–50%",
+    ],
+    stack: ["Python", "Pytest", "Docker", "Git"],
+  },
+];
+
+export const projects: ProjectItem[] = [
+  {
+    title: "AXIS",
+    description:
+      "End-to-end meeting intelligence product spanning a React web app, Chrome recording extension, and Supabase Edge Functions for transcription, structured task extraction, and contextual AI chat.",
+    url: "https://tryaxisapp.com/",
+    tags: ["TypeScript", "React", "Supabase", "OpenAI", "Chrome MV3"],
+    highlight: "Production AI product",
+  },
+  {
+    title: "Hivemind Bot",
+    description:
+      "Message-driven LLM assistant utilizing a RAG pipeline, integrating with FastAPI, RabbitMQ, and Temporal for scalable community analytics.",
+    url: "https://github.com/TogetherCrew/hivemind-bot",
+    tags: ["Python", "RAG", "llama-index", "RabbitMQ", "Temporal"],
+    highlight: "Multi-interface LLM",
+  },
+  {
+    title: "Airflow DAGs",
+    description:
+      "Orchestrated analyzer pipelines, data vectorization with ETL (embedding cache, deduplication, streaming), platform data extraction, and violation-detection classification.",
+    url: "https://github.com/TogetherCrew/airflow-dags",
+    tags: ["Python", "Airflow", "ETL", "Embeddings"],
+    highlight: "10+ pipelines",
+  },
+  {
+    title: "Temporal Worker",
+    description:
+      "Temporal workflows in Python to orchestrate ETL pipelines (website & MediaWiki ingestion) and generate summaries using MongoDB, Qdrant, Redis, and PostgreSQL.",
+    url: "https://github.com/TogetherCrew/temporal-worker-python",
+    tags: ["Python", "Temporal", "MongoDB", "Qdrant", "Redis"],
+    highlight: "Fault-tolerant ETL",
+  },
+  {
+    title: "Agents Workflow",
+    description:
+      "Multi-agent workflow system using CrewAI and Temporal, with MongoDB persistence for step-level traceability, Redis-backed chat history, and RAG pipelines.",
+    url: "https://github.com/TogetherCrew/agents-workflow",
+    tags: ["Python", "CrewAI", "Temporal", "MongoDB", "RAG"],
+    highlight: "Multi-agent orchestration",
+  },
+  {
+    title: "TC Analyzer Lib",
+    description:
+      "Core analytics library for community analysis, providing graph-based metrics and behavioral insights at scale.",
+    url: "https://github.com/TogetherCrew/tc_analyzer_lib",
+    tags: ["Python", "Neo4j", "Analytics", "Graph DB"],
+    highlight: "Open source",
+  },
+];
+
+export const skillCategories: SkillCategory[] = [
+  {
+    id: "languages",
+    title: "Languages",
+    skills: ["Python", "TypeScript", "JavaScript", "SQL", "LaTeX"],
+  },
+  {
+    id: "ai",
+    title: "AI / LLM",
+    skills: [
+      "Open-source LLMs",
+      "GLM-5.2",
+      "Gemma 4",
+      "gpt-oss-120b",
+      "Hybrid RAG",
+      "Multi-Agent Systems",
+      "LLM Evaluation",
+      "Traceability",
+      "OpenAI API",
+      "llama-index",
+      "LangChain",
+      "CrewAI",
+    ],
+  },
+  {
+    id: "backend",
+    title: "Backend & Data",
+    skills: ["Supabase", "PostgreSQL", "MongoDB", "Neo4j", "Qdrant"],
+  },
+  {
+    id: "workflow",
+    title: "Workflow & Pipelines",
+    skills: ["Apache Airflow", "Temporal", "RabbitMQ", "AWS S3 / MinIO"],
+  },
+  {
+    id: "frontend",
+    title: "Frontend & Product (Secondary)",
+    skills: ["React", "Vite", "Tailwind CSS", "Chrome Extensions (MV3)", "AI-assisted Development"],
+  },
+  {
+    id: "tooling",
+    title: "Tooling",
+    skills: ["Docker", "Git", "Pytest", "CI/CD"],
+  },
+];
+
+export const volunteerWork: VolunteerItem[] = [
+  {
+    role: "Co-Founder & Organizer",
+    organization: "AI Talks Community",
+    url: "https://www.aitalkshub.ir/",
+    period: "Nov 2024 – Present",
+    description:
+      "AI Talks is a volunteer-run, bilingual community that meets weekly to explore practical, applied AI. Sessions and notes are free, public, and published in both English and Persian.",
+    highlights: [
+      "Help organize, host, and present weekly sessions on production RAG, multi-agent systems, LLM costs, and workflow automation",
+      "Grew the initiative to 55+ sessions, 20+ speakers, 20+ topics, and 50+ bilingual session write-ups",
+      "Presented or contributed to 10+ sessions since joining as a speaker in Session 16",
+    ],
+  },
+  {
+    role: "Co-Founder",
+    organization: "Cassandra AI Group",
+    url: "https://www.youtube.com/@cassandraai",
+    period: "Oct 2021 – Oct 2023",
+    description:
+      "Co-founded Cassandra AI Group focused on academic workshops and educational content around artificial intelligence, making AI knowledge accessible through structured learning sessions.",
+    highlights: [
+      "Produced educational AI content on YouTube",
+      "Hosted academic workshops on AI fundamentals and advanced topics",
+      "Created a platform for knowledge sharing in the AI space",
+    ],
+  },
+];
+
+export const socials: SocialLink[] = [
+  { id: "github", label: "GitHub", url: "https://github.com/amindadgar" },
+  { id: "linkedin", label: "LinkedIn", url: "https://www.linkedin.com/in/amindadgar/" },
+  { id: "medium", label: "Medium", url: "https://amindadgar.medium.com/" },
+  { id: "x", label: "X / Twitter", url: "https://twitter.com/mramin22" },
+];
+
 const writings: WritingItem[] = [
   {
     title: "Taking a Look Back at the RAG Stack I Built",

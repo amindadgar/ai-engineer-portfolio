@@ -9,7 +9,7 @@ const WritingsSection = () => {
     <section id="writings" className="section-padding scroll-mt-24 border-t border-border">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
-          index="06"
+          index="07"
           kicker="Writings"
           title="Recent writings"
           description="Thoughts on AI systems, model behavior, and the practical tradeoffs behind building reliable intelligent products."
