@@ -24,7 +24,7 @@ const ChatLauncher = () => {
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="fixed bottom-5 right-5 z-40 inline-flex items-center gap-2 rounded-full border border-primary/40 bg-card px-4 py-2.5 text-sm font-medium text-foreground shadow-lg shadow-black/40 transition-colors animate-fade-in hover:border-primary hover:bg-surface-hover"
+          className="fixed bottom-5 right-5 z-40 inline-flex items-center gap-2 rounded-full border border-primary/40 bg-card px-4 py-2.5 text-sm font-medium text-foreground shadow-lg shadow-foreground/10 dark:shadow-black/40 transition-colors animate-fade-in hover:border-primary hover:bg-surface-hover"
         >
           <Sparkles className="h-4 w-4 text-primary" />
           Ask AI

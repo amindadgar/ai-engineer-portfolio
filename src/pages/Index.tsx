@@ -12,6 +12,7 @@ import Footer from "@/components/Footer";
 import WritingsSection from "@/components/WritingsSection";
 import AskSection from "@/components/AskSection";
 import ChatLauncher from "@/components/chat/ChatLauncher";
+import SectionNav from "@/components/SectionNav";
 import { ChatProvider } from "@/hooks/use-chat";
 
 const Index = () => {
@@ -19,6 +20,7 @@ const Index = () => {
     <ChatProvider>
       <div className="min-h-screen bg-background">
         <Navbar />
+        <SectionNav />
         <HeroSection />
         <AboutSection />
         <AskSection />
