@@ -1,7 +1,15 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
+    <!-- Apply the saved theme before first paint to avoid a flash; dark is the default. -->
+    <script>
+      try {
+        if (localStorage.getItem("theme") === "light") {
+          document.documentElement.classList.replace("dark", "light");
+        }
+      } catch (e) {}
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mohammad Amin Dadgar — Freelance AI Engineer</title>
     <meta name="description" content="Freelance AI Engineer with 5+ years designing, building, evaluating, and maintaining production LLM systems, multi-agent architectures, and hybrid RAG pipelines." />
