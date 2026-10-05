@@ -41,6 +41,8 @@ export type ProjectItem = {
   url: string;
   tags: string[];
   highlight: string;
+  /** Shown as a large tile on the homepage. */
+  featured?: boolean;
 };
 
 export type SkillCategoryId = "languages" | "ai" | "backend" | "workflow" | "frontend" | "tooling";
@@ -164,6 +166,7 @@ export const projects: ProjectItem[] = [
     url: "https://tryaxisapp.com/",
     tags: ["TypeScript", "React", "Supabase", "OpenAI", "Chrome MV3"],
     highlight: "Production AI product",
+    featured: true,
   },
   {
     title: "Hivemind Bot",
@@ -172,6 +175,7 @@ export const projects: ProjectItem[] = [
     url: "https://github.com/TogetherCrew/hivemind-bot",
     tags: ["Python", "RAG", "llama-index", "RabbitMQ", "Temporal"],
     highlight: "Multi-interface LLM",
+    featured: true,
   },
   {
     title: "Airflow DAGs",

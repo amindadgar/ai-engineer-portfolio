@@ -1,6 +1,7 @@
 import { ArrowUpRight, GraduationCap, Users } from "lucide-react";
 import AskAboutButton from "@/components/chat/AskAboutButton";
 import Emphasized from "@/components/Emphasized";
+import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import { education, profile, volunteerWork } from "@/data/portfolio";
 
@@ -14,7 +15,7 @@ const AboutSection = () => {
         <SectionHeading index="01" kicker="About" title="Background" />
 
         <div className="grid gap-10 md:grid-cols-2">
-          <div className="space-y-6">
+          <Reveal className="space-y-6">
             <div className="space-y-4 leading-relaxed text-muted-foreground">
               {profile.about.slice(0, SHOWN_PARAGRAPHS).map((paragraph) => (
                 <p key={paragraph}>
@@ -23,7 +24,7 @@ const AboutSection = () => {
               ))}
             </div>
 
-            <div className="rounded-lg border border-border bg-card p-6">
+            <div className="spotlight rounded-lg border border-border bg-card p-6">
               <div className="mb-4 flex items-center gap-2.5">
                 <GraduationCap className="h-4 w-4 text-primary" />
                 <h3 className="text-sm font-semibold text-foreground">Education</h3>
@@ -39,11 +40,11 @@ const AboutSection = () => {
                 ))}
               </div>
             </div>
-          </div>
+          </Reveal>
 
-          <div>
+          <Reveal delay={120}>
             {/* Keeps the old #volunteer anchor alive for shared links and the assistant's section links. */}
-            <div id="volunteer" className="scroll-mt-24 rounded-lg border border-border bg-card p-6">
+            <div id="volunteer" className="spotlight scroll-mt-24 rounded-lg border border-border bg-card p-6">
               <div className="mb-4 flex items-center gap-2.5">
                 <Users className="h-4 w-4 text-primary" />
                 <h3 className="text-sm font-semibold text-foreground">Community</h3>
@@ -73,7 +74,7 @@ const AboutSection = () => {
               </p>
               <AskAboutButton question="Tell me about Amin's community work with AI Talks" className="mt-5" />
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

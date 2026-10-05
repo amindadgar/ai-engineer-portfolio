@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Reveal from "@/components/Reveal";
 
 type SectionHeadingProps = {
   index: string;
@@ -8,7 +9,7 @@ type SectionHeadingProps = {
 };
 
 const SectionHeading = ({ index, kicker, title, description }: SectionHeadingProps) => (
-  <div className="mb-10">
+  <Reveal className="mb-10">
     <p className="label-mono mb-3">
       <span className="text-muted-foreground">{index}</span>
       <span className="mx-2 text-muted-foreground/50">/</span>
@@ -20,7 +21,7 @@ const SectionHeading = ({ index, kicker, title, description }: SectionHeadingPro
         {description}
       </p>
     )}
-  </div>
+  </Reveal>
 );
 
 export default SectionHeading;

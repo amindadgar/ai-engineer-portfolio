@@ -13,8 +13,11 @@ import AskSection from "@/components/AskSection";
 import ChatLauncher from "@/components/chat/ChatLauncher";
 import SectionNav from "@/components/SectionNav";
 import { ChatProvider } from "@/hooks/use-chat";
+import { useSpotlight } from "@/hooks/use-spotlight";
 
 const Index = () => {
+  useSpotlight();
+
   return (
     <ChatProvider>
       <div className="min-h-screen bg-background">
