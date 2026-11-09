@@ -17,6 +17,8 @@ export type ChatMessage = {
   status: "streaming" | "done" | "error";
   /** Show the contact card under this reply. */
   contact?: boolean;
+  /** While waiting for the first token: running the Cloudflare check, or waiting on the model. */
+  phase?: "verifying" | "thinking";
 };
 
 type ChatContextValue = {
@@ -72,9 +74,10 @@ export const ChatProvider = ({ children }: { children: ReactNode }) => {
     };
   }, []);
 
-  const ensureSession = useCallback(async (forceNew = false) => {
+  const ensureSession = useCallback(async (forceNew = false, onVerifying?: () => void) => {
     const current = session.current;
     if (!forceNew && current && current.expiresAt - Date.now() > SESSION_MARGIN_MS) return current;
+    onVerifying?.();
     const host = turnstileHosts.current.at(-1);
     if (!host) throw new Error("No chat panel to show verification in");
     const turnstileToken = await getTurnstileToken(host);
@@ -96,12 +99,15 @@ export const ChatProvider = ({ children }: { children: ReactNode }) => {
       setMessages((all) => [
         ...all,
         { id: userId, role: "user", content: message, status: "done" },
-        { id: replyId, role: "assistant", content: "", status: "streaming" },
+        { id: replyId, role: "assistant", content: "", status: "streaming", phase: "thinking" },
       ]);
       setBusy(true);
 
       const attempt = async (forceNewSession: boolean) => {
-        const { token } = await ensureSession(forceNewSession);
+        const { token } = await ensureSession(forceNewSession, () =>
+          updateMessage(replyId, (m) => ({ ...m, phase: "verifying" })),
+        );
+        updateMessage(replyId, (m) => ({ ...m, phase: "thinking" }));
         return streamReply(token, message, (delta) =>
           updateMessage(replyId, (m) => ({ ...m, content: m.content + delta })),
         );

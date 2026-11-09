@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
 import { ArrowUp, Mail, RotateCcw, Sparkles } from "lucide-react";
 import ChatMarkdown from "@/components/chat/ChatMarkdown";
+import LoadingText from "@/components/chat/LoadingText";
 import { stripMarkers } from "@/lib/chat-text";
 import { useChat, type ChatMessage } from "@/hooks/use-chat";
 import { MAX_MESSAGE_CHARS } from "@/lib/chat-client";
@@ -13,18 +14,6 @@ const STARTER_QUESTIONS = [
   "What has he shipped on GitHub lately?",
   "Is he a fit for a voice-agent project?",
 ];
-
-const TypingDots = () => (
-  <span className="inline-flex gap-1 py-1" aria-label="Assistant is typing">
-    {[0, 1, 2].map((i) => (
-      <span
-        key={i}
-        className="h-1.5 w-1.5 animate-pulse rounded-full bg-muted-foreground"
-        style={{ animationDelay: `${i * 0.15}s` }}
-      />
-    ))}
-  </span>
-);
 
 const ContactCard = ({ onClick, onLinkClick }: { onClick: () => void; onLinkClick?: () => void }) => (
   <div className="mt-3 rounded-md border border-primary/30 bg-primary/5 p-3">
@@ -81,7 +70,7 @@ const MessageView = ({
           message.status === "error" ? "text-muted-foreground" : "text-foreground/90",
         )}
       >
-        {text ? <ChatMarkdown text={text} onLinkClick={onLinkClick} /> : <TypingDots />}
+        {text ? <ChatMarkdown text={text} onLinkClick={onLinkClick} /> : <LoadingText phase={message.phase ?? "thinking"} />}
       </div>
       {message.contact && message.status !== "streaming" && (
         <ContactCard onClick={onContactClick} onLinkClick={onLinkClick} />
