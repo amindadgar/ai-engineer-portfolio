@@ -32,6 +32,8 @@ type ChatContextValue = {
   setLauncherOpen: (open: boolean) => void;
   /** Open the chat sheet and send a prepared question, e.g. from an "Ask AI about this" button. */
   ask: (question: string) => void;
+  /** A chat panel registers a container for the Cloudflare check; the most recently mounted panel wins. */
+  registerTurnstileHost: (element: HTMLElement) => () => void;
 };
 
 const ChatContext = createContext<ChatContextValue | null>(null);
@@ -61,12 +63,21 @@ export const ChatProvider = ({ children }: { children: ReactNode }) => {
   const [launcherOpen, setLauncherOpen] = useState(false);
   const session = useRef<ChatSession | null>(null);
   const nextId = useRef(1);
-  const turnstileContainer = useRef<HTMLDivElement>(null);
+  const turnstileHosts = useRef<HTMLElement[]>([]);
+
+  const registerTurnstileHost = useCallback((element: HTMLElement) => {
+    turnstileHosts.current.push(element);
+    return () => {
+      turnstileHosts.current = turnstileHosts.current.filter((host) => host !== element);
+    };
+  }, []);
 
   const ensureSession = useCallback(async (forceNew = false) => {
     const current = session.current;
     if (!forceNew && current && current.expiresAt - Date.now() > SESSION_MARGIN_MS) return current;
-    const turnstileToken = await getTurnstileToken(turnstileContainer.current!);
+    const host = turnstileHosts.current.at(-1);
+    if (!host) throw new Error("No chat panel to show verification in");
+    const turnstileToken = await getTurnstileToken(host);
     // Passing the old token lets the server keep the same conversation after expiry.
     session.current = await createSession(turnstileToken, window.location.pathname, current?.token);
     return session.current;
@@ -141,15 +152,13 @@ export const ChatProvider = ({ children }: { children: ReactNode }) => {
   );
 
   const value = useMemo(
-    () => ({ messages, busy, closed, send, reset, contactClicked, launcherOpen, setLauncherOpen, ask }),
-    [messages, busy, closed, send, reset, contactClicked, launcherOpen, ask],
+    () => ({ messages, busy, closed, send, reset, contactClicked, launcherOpen, setLauncherOpen, ask, registerTurnstileHost }),
+    [messages, busy, closed, send, reset, contactClicked, launcherOpen, ask, registerTurnstileHost],
   );
 
   return (
     <ChatContext.Provider value={value}>
       {children}
-      {/* Turnstile renders here only if Cloudflare needs the visitor to interact. */}
-      <div ref={turnstileContainer} className="fixed bottom-4 left-1/2 z-[60] -translate-x-1/2" />
     </ChatContext.Provider>
   );
 };

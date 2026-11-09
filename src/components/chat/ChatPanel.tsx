@@ -97,10 +97,14 @@ type ChatPanelProps = {
 };
 
 const ChatPanel = ({ className, onLinkClick }: ChatPanelProps) => {
-  const { messages, busy, closed, send, reset, contactClicked } = useChat();
+  const { messages, busy, closed, send, reset, contactClicked, registerTurnstileHost } = useChat();
   const [draft, setDraft] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const verifyRef = useRef<HTMLDivElement>(null);
+
+  // The Cloudflare check renders inside this panel, only if it needs the visitor to interact.
+  useEffect(() => registerTurnstileHost(verifyRef.current!), [registerTurnstileHost]);
 
   // Keep the newest text in view while a reply streams in.
   useEffect(() => {
@@ -182,6 +186,7 @@ const ChatPanel = ({ className, onLinkClick }: ChatPanelProps) => {
       </div>
 
       <form onSubmit={onSubmit} className="border-t border-border p-3">
+        <div ref={verifyRef} className="flex justify-center empty:hidden [&:not(:empty)]:mb-3" />
         <div className="flex items-end gap-2 rounded-md border border-border bg-background px-3 py-2 focus-within:border-primary/50">
           <textarea
             ref={inputRef}
